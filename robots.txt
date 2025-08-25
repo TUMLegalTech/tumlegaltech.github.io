@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://tum-legal-tech.github.io/sitemap.xml

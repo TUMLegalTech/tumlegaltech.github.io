@@ -1,0 +1,9 @@
+<!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+
+Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+
+Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them. -->
+
+Shanshan is a doctoral candidate in the Legal Tech Group at TU Munich under the guidance of Matthias Grabmair. Affiliated with MaiNLP at LMU, she benefits from the mentorship of Barbara Plank. With prior experience as a speech scientist at Nuance Communications/Cerence, Shanshan completed her master's degree in Cultural and Cognitive Linguistics at LMU Munich. Her research interests encompass Natural Language Processing (NLP) in LegalTech, Computational Social Science, and Computational Linguistics.
+
+In addition to her academic pursuits, Shanshan is actively involved as an organizer for Munich🥨NLP. She spearheads events that promote community engagement, with a particular focus on supporting and encouraging women in NLP. Shanshan's dedication extends to actively fostering diversity and inclusivity within the field, contributing to a vibrant and inclusive research environment.

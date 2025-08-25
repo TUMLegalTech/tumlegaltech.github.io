@@ -1,0 +1,9 @@
+<!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+
+Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+
+Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them. -->
+
+Matthias Grabmair is a tenure-track Assistant Professor of Legal Tech in the Department of Informatics at the Technical University of Munich. Before joining TUM in January 2021, he worked as a Legal Data Scientist at the German legal informatics company SINC (2019-2020). Prior to that, he spent four years at Carnegie Mellon University's Language Technologies Institute working with Prof. Eric Nyberg as a Visiting Researcher, Postdoc, and Systems Scientist (2015-2019). He obtained a diploma in law from the University of Augsburg, Germany, as well as a Master of Laws (LL.M.) and Ph.D. in Intelligent Systems mentored by Prof. Kevin Ashley from the University of Pittsburgh.
+
+Dr. Grabmair serves as the section editor for Machine Learning of the Journal of Artificial Intelligence & Law and co-founded the ASAIL Workshop Series on Automated Extraction of Semantic Information in Legal Text, for which he has also been chairing the organizing committee since 2019.
