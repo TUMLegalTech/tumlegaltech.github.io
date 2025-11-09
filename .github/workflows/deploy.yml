@@ -1,49 +1,116 @@
-name: deploy
+# _config.yml
 
-on:
-  push:
-    branches:
-      - master
-      - main
-  pull_request:
-    branches:
-      - master
-      - main
-  workflow_dispatch:
+title: TUM Legal Tech
+description: "Website for the TUM Legal Tech group"
+url: "https://tumlegaltech.github.io"   # update if you use a custom domain
+baseurl: ""                             # no subpath for org/user pages
 
-permissions:
-  contents: write
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima   # or your custom theme; keep if you have overrides in _layouts
 
-jobs:
-  deploy:
-    # available images: https://github.com/actions/runner-images#available-images
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@v3
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2.2'
-        bundler-cache: true
-    - name: Update _config.yml ⚙️
-      uses: fjogeleit/yaml-update-action@v0.13.1
-      with:
-        commitChange: false
-        valueFile: '_config.yml'
-        propertyPath: 'giscus.repo'
-        value: ${{ github.repository }}
-    - name: Install and Build 🔧
-      run: |
-        pip3 install --upgrade jupyter
-        npm install -g mermaid.cli
-        npm install -g purgecss
-        export JEKYLL_ENV=production
-        bundle exec jekyll build --lsi
-        purgecss -c purgecss.config.js
-    - name: Deploy 🚀
-      if: github.event_name != 'pull_request'
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: _site
+# Plugins your site uses
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-scholar
+
+# If GitHub Pages complains about plugins, you can list them under:
+# gems: []
+# but since you're building in Actions, this is fine.
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+  news:
+    output: true
+    permalink: /news/:path/
+  projects:
+    output: true
+    permalink: /projects/:path/
+  teaching:
+    output: true
+    permalink: /teaching/:path/
+  pages:
+    output: true
+    permalink: /:path/
+  people:
+    output: true
+    permalink: /people/:path/
+
+# Defaults for different content types
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: TUM Legal Tech
+  - scope:
+      path: ""
+      type: "news"
+    values:
+      layout: post
+      output: true
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: project
+      output: true
+  - scope:
+      path: ""
+      type: "teaching"
+    values:
+      layout: teaching
+      output: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
+      output: true
+
+# Navigation or data-driven content
+# If you have _data/navigation.yml etc., Jekyll will pick it up automatically.
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# jekyll-scholar (since you have _bibliography)
+scholar:
+  style: apa
+  source: _bibliography
+  bibliography: references.bib
+
+# Giscus (your workflow updates this)
+giscus:
+  repo: "TUMLegalTech/tumlegaltech.github.io"  # will be overwritten by the Action
+
+# Exclude stuff that shouldn’t go to _site
+exclude:
+  - node_modules
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - INSTALL.md
+  - Dockerfile
+  - docker-compose.yml
+  - bin
+  - purgecss.config.js
+
+# Include any extra directories if needed
+include:
+  - _pages
+  - _news
+  - _projects
+  - _teaching
 
