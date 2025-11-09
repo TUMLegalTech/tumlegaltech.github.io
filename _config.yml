@@ -182,9 +182,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
-  teaching:
-    output: true
-    permalink: /teaching/:path/
+#   teaching:
+#     output: true
+#     permalink: /teaching/:path/
   funding:
     defaults:
       layout: funding-post
