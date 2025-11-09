@@ -6,7 +6,7 @@ title: TUM Legal Tech Group # the website title (if blank, full name will be use
 first_name: Matthias
 middle_name: null
 last_name: Grabmair
-email: matthias.grabmair@tum.de
+email: TODO add general mail
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   The official webpage of the TUM Legal Tech research group.
 footer_text: >
@@ -29,9 +29,9 @@ impressum_path:  # set to path to include impressum link in the footer, use the 
 
 # repo color theme
 repo_theme_light: default       # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
-repo_theme_dark: dark           # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_theme_dark: transparent           # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_trophies:
-  enabled: true
+  enabled: false
   theme_light: flat    # https://github.com/ryo-ma/github-profile-trophy
   theme_dark: gitdimmed  # https://github.com/ryo-ma/github-profile-trophy
 
@@ -48,7 +48,7 @@ rss_icon: false
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 
 # Dimensions
 max_width: 800px
@@ -104,8 +104,8 @@ discord_id: # your discord id (18-digit unique numerical identifier)
 zotero_username: # your zotero username
 wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 
-contact_note: >
-  Send us an email!
+address: >
+  Boltzmannstr. 3/I 85748 Garching, Germany
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -119,6 +119,13 @@ cronitor_analytics:  # cronitor RUM analytics site ID (format: XXXXXXXXX)
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
 google_site_verification:  # your google-site-verification ID (Google Search Console)
 bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
+
+# -----------------------------------------------------------------------------
+# People
+# -----------------------------------------------------------------------------
+
+profile:
+  image-circular: false # set to true to display people images in a circular shape
 
 # -----------------------------------------------------------------------------
 # Blog
@@ -178,6 +185,20 @@ collections:
   teaching:
     output: true
     permalink: /teaching/:path/
+  funding:
+    defaults:
+      layout: funding-post
+    output: true
+    permalink: /funding/:path
+  people:
+    defaults:
+      layout: post
+    output: true
+    permalink: /people/:path
+  teaching:
+    defaults: post
+    output: true
+    permalink: /teaching/:path
     
 announcements:
   enabled: true
@@ -188,6 +209,11 @@ latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
+
+research_supporters:
+  enabled: true
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit:  # leave blank to include all the blog posts
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -312,11 +338,11 @@ enable_publication_badges:
 filtered_bibtex_keywords: [abbr, abstract, altmetric, arxiv, bibtex_show, blog, code, html, pdf, poster, preview, selected, slides, supp, video, website]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
-max_author_limit: 3  # leave blank to always show all authors
+max_author_limit:   # leave blank to always show all authors
 more_authors_animation_delay: 10  # more authors are revealed on click using animation; smaller delay means faster animation
 
 # Enables publication thumbnails. If disabled, none of the publications will display thumbnails, even if specified in the bib entry.
-enable_publication_thumbnails: true
+enable_publication_thumbnails: false
 
 # -----------------------------------------------------------------------------
 # Jekyll Link Attributes
@@ -367,6 +393,7 @@ enable_math:                true   # enables math typesetting (uses MathJax)
 enable_tooltips:            false  # enables automatic tooltip links generated for each section titles on pages and posts
 enable_darkmode:            true   # enables switching between light/dark modes
 enable_navbar_social:       false  # enables displaying social links in the navbar on the about page
+enable_people_categories:   true
 enable_teaching_categories: true   # enables categorization of teaching courses into multiple categories
 enable_project_categories:  true   # enables categorization of projects into multiple categories
 enable_medium_zoom:         true   # enables image zoom feature (as on medium.com)

@@ -1,0 +1,134 @@
+{% if page.homepage -%}
+<a href="{{ page.homepage }}" title="homepage"><i class="fa-solid fa-up-right-from-square"></i></a>
+{% endif -%}
+{% if page.room -%}
+<a href="https://nav.tum.de/room/{{ page.room }}" title="room"><i class="fa-solid fa-people-roof"></i></a>
+{% endif -%}
+{%- if page.email -%}
+  <a href="mailto:{{ page.email | encode_email }}" title="email"><i class="fa-solid fa-envelope"></i></a>
+  {% endif %}
+  {%- if page.telegram_username -%}
+  <a href="https://telegram.me/{{ page.telegram_username }}" title="telegram"><i class="fa-brands fa-telegram"></i></a>
+  {% endif %}
+  {%- if page.whatsapp_number -%}
+  <a href="https://wa.me/{{ page.whatsapp_number }}" title="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+  {% endif %}
+  {%- if page.orcid_id -%}
+  <a href="https://orcid.org/{{ page.orcid_id }}" title="ORCID"><i class="ai ai-orcid"></i></a>
+  {% endif %}
+  {%- if page.scholar_userid -%}
+  <a href="https://scholar.google.com/citations?user={{ page.scholar_userid }}" title="Google Scholar"><i
+      class="ai ai-google-scholar"></i></a>
+  {% endif %}
+  {%- if page.semanticscholar_id -%}
+  <a href="https://www.semanticscholar.org/author/{{ page.semanticscholar_id }}" title="Semantic Scholar"><i
+      class="ai ai-semantic-scholar"></i></a>
+  {% endif %}
+  {%- if page.publons_id -%}
+  <a href="https://publons.com/a/{{ page.publons_id }}/" title="Publons"><i class="ai ai-publons"></i></a>
+  {% endif %}
+  {%- if page.lattes_id -%}
+  <a href="http://lattes.cnpq.br/{{ page.lattes_id }}" target="_blank" title="Lattes"><i class="ai ai-lattes"></i></a>
+  {% endif %}
+  {%- if page.osf_id -%}
+  <a href="https://osf.io/{{ page.osf_id }}/" title="Open Science Framework"><i class="ai ai-osf"></i></a>
+  {% endif %}
+  {%- if page.research_gate_profile -%}
+  <a href="https://www.researchgate.net/profile/{{page.research_gate_profile}}/" title="ResearchGate"><i
+      class="ai ai-researchgate"></i></a>
+  {% endif %}
+  {%- if page.scopus_id -%}
+  <a href="https://www.scopus.com/authid/detail.uri?authorId={{page.scopus_id}}" title="Scopus"><i
+      class="ai ai-scopus"></i></a>
+  {% endif %}
+  {%- if page.github_username -%}
+  <a href="https://github.com/{{ page.github_username }}" title="GitHub"><i class="fa-brands fa-github"></i></a>
+  {% endif %}
+  {%- if page.linkedin_username -%}
+  <a href="https://www.linkedin.com/in/{{ page.linkedin_username }}" title="LinkedIn"><i
+      class="fa-brands fa-linkedin"></i></a>
+  {% endif %}
+  {%- if page.x_username -%}
+  <a href="https://twitter.com/{{ page.x_username }}" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+  {% endif %}
+  {%- if page.mastodon_username -%}
+  <a rel="me" href="https://{{ page.mastodon_username  }}" title="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+  {% endif %}
+  {%- if page.medium_username -%}
+  <a href="https://medium.com/@{{ page.medium_username }}" title="Medium"><i class="fa-brands fa-medium"></i></a>
+  {% endif %}
+  {%- if page.quora_username -%}
+  <a href="https://www.quora.com/profile/{{ page.quora_username }}" title="Quora"><i class="fa-brands fa-quora"></i></a>
+  {% endif %}
+  {%- if page.blogger_url -%}
+  <a href="{{ page.blogger_url }}" title="Blogger"><i class="fa-brands fa-blogger-b"></i></a>
+  {% endif %}
+  {%- if page.work_url -%}
+  <a href="{{ page.work_url }}" title="Work"><i class="fa-solid fa-briefcase"></i></a>
+  {% endif %}
+  {%- if page.wikidata_id -%}
+  <a href="https://www.wikidata.org/wiki/{{ page.wikidata_id }}" title="Wikidata"><i
+      class="fa-solid fa-barcode"></i></a>
+  {% endif %}
+  {%- if page.wikipedia_id -%}
+  <a href="https://wikipedia.org/wiki/User:{{ page.wikipedia_id }}" title="Wikipedia"><i
+      class="fa-brands fa-wikipedia-w"></i></a>
+  {% endif %}
+  {%- if page.strava_userid -%}
+  <a href="https://www.strava.com/athletes/{{ page.strava_userid }}" title="Strava"><i
+      class="fa-brands fa-strava"></i></a>
+  {% endif %}
+  {%- if page.keybase_username -%}
+  <a href="https://keybase.io/{{ page.keybase_username }}" title="Keybase"><i class="fa-brands fa-keybase"></i></a>
+  {% endif %}
+  {%- if page.gitlab_username -%}
+  <a href="https://gitlab.com/{{ page.gitlab_username }}" title="GitLab"><i class="fa-brands fa-gitlab"></i></a>
+  {% endif %}
+  {%- if page.dblp_url -%}
+  <a href="{{ page.dblp_url }}" title="DBLP"><i class="ai ai-dblp"></i></a>
+  {% endif %}
+  {%- if page.stackoverflow_id -%}
+  <a href="https://stackoverflow.com/users/{{ page.stackoverflow_id }}" title="Stackoverflow"><i
+      class="fa-brands fa-stack-overflow"></i></a>
+  {% endif %}
+  {%- if page.kaggle_id -%}
+  <a href="https://www.kaggle.com/{{ page.kaggle_id }}" title="Kaggle"><i class="fa-brands fa-kaggle"></i></a>
+  {% endif %}
+  {%- if page.lastfm_id -%}
+  <a href="https://www.last.fm/user/{{ page.lastfm_id }}" title="Last FM"><i class="fa-brands fa-lastfm"></i></a>
+  {% endif %}
+  {%- if page.spotify_id -%}
+  <a href="https://open.spotify.com/user/{{ page.spotify_id }}" title="Spotify"><i class="fa-brands fa-spotify"></i></a>
+  {% endif %}
+  {%- if page.pinterest_id -%}
+  <a href="https://www.pinterest.com/{{ page.pinterest_id }}" title="Pinterest"><i
+      class="fa-brands fa-pinterest"></i></a>
+  {% endif %}
+  {%- if page.unsplash_id -%}
+  <a href="https://unsplash.com/@{{ page.unsplash_id }}" title="Unsplash"><i class="fa-brands fa-unsplash"></i></a>
+  {% endif %}
+  {%- if page.instagram_id -%}
+  <a href="https://instagram.com/{{ page.instagram_id }}" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  {% endif %}
+  {%- if page.facebook_id -%}
+  <a href="https://facebook.com/{{ page.facebook_id }}" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+  {% endif %}
+  {%- if page.youtube_id -%}
+  <a href="https://youtube.com/@{{ page.youtube_id }}" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+  {% endif %}
+  {%- if page.discord_id -%}
+  <a href="https://discord.com/users/{{ page.discord_id }}" title="Discord"><i class="fa-brands fa-discord"></i></a>
+  {% endif %}
+  {%- if page.zotero_username -%}
+  <a href="https://www.zotero.org/{{ page.zotero_username }}" title="Zotero"><i class="ai ai-zotero"></i></a>
+  {% endif %}
+  {%- if page.rss_icon -%}
+  <a href="{{ page.baseurl }}/feed.xml" title="RSS Feed"><i class="fa-solid fa-square-rss"></i></a>
+  {% endif %}
+  {%- if page.wechat_qr -%}
+  <a id="WeChatBtn" title="WeChat"><i class="fa-brands fa-weixin"></i></a>
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="{{ page.wechat_qr | prepend: 'assets/img/' | relative_url }}" alt="WeChat QR" id="WeChatQR">
+  </div>
+  {% include scripts/wechatModal.html %}
+  {% endif %}

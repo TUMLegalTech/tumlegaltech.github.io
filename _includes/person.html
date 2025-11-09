@@ -1,0 +1,30 @@
+<!-- _includes/people.html -->
+<div class="grid-sizer">
+  <div class="grid-item">
+    {% if person.redirect -%}
+    <a href="{{ person.redirect }}">
+      {%- else -%}
+      <a href="{{ person.url | relative_url }}">
+        {%- endif %}
+        <div class="card">
+          <div class="card-img">
+            {%- if person.img %}
+            {%- include figure.html
+            path=person.img
+            sizes = "250px"
+            alt="person thumbnail" -%}
+            {%- else %}
+            {%- include figure.html
+            path="/assets/img/people-default.jpg"
+            sizes = "250px"
+            alt="person thumbnail" -%}
+            {%- endif %}
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">{{ person.title }}</h2>
+            <p class="card-text">{{ person.description }}</p>
+          </div>
+        </div>
+      </a>
+  </div>
+</div>

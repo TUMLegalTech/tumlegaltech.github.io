@@ -1,0 +1,52 @@
+<div class="card-item col">
+  {%- if course.redirect -%}
+  <a href="{{ course.redirect }}">
+    {%- else -%}
+    <a href="{{ course.url | relative_url }}">
+      {%- endif -%}
+      <div class="card">
+        <div class="row g-0">
+          {%- if course.img -%}
+          <div class="card-img col-md-6">
+            {% include figure.html path=course.img sizes="(min-width: 768px) 156px, 50vw" alt="course thumbnail" %}
+          </div>
+          <div class="col-md-6">
+            {%- else -%}
+            <div class="col-md-12">
+              {%- endif -%}
+              <div class="card-body">
+                <h3 class="card-title text-lowercase">{{ course.title }}</h3>
+                <p class="card-text">{{ course.description }}</p>
+                <div class="course-tags">
+                  {%- if course.nr %}
+                  {% for nr_id in course.nr %}
+                  <span class="badge bg-warning">{{ nr_id }}</span>
+                  {% endfor %}
+                  {%- endif %}
+                  {%- if course.instructors %}
+                  {% for instructor_id in course.instructors %}
+                  {% assign instructor_person = site.people | where: "slug", instructor_id | first %}
+                  {% if instructor_person %}
+                  <a class="badge bg-primary" href="{{ instructor_person.permalink | relative_url }}">{{
+                    instructor_person.name }}</a>
+                  {% else %}
+                  {{ instructor_id }}
+                  {% endif %}
+                  {% endfor %}
+                  {%- endif %}
+                  {%- if course.sws %}
+                  <span class="badge bg-info">{{ course.sws }} SWS</span>
+                  {%- endif %}
+                  {%- if course.ects %}
+                  <span class="badge bg-success">{{ course.ects }} ECTS</span>
+                  {%- endif %}
+                  {%- if course.language %}
+                  <span class="badge bg-secondary">{{ course.language }}</span>
+                  {%- endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </a>
+</div>

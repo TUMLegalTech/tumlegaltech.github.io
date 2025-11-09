@@ -1,0 +1,52 @@
+---
+layout: page
+---
+
+<!-- about.html -->
+<div class="post people">
+  {% if site.people %}
+  {% assign order = "Research Group Lead,Research Associates,Nonresident Fellows,Student Research
+  Assistants,Administrative Support,Alumni" | split: "," %}
+  {% assign grouped_profiles = site.people | group_by: "category" %}
+
+  {% for category in order %}
+  {% for group in grouped_profiles %}
+  {% if group.name == category %}
+  <h2 class="category">{{ group.name }}</h2>
+  <div class="grid">
+    {% for profile in group.items %}
+    <div class="grid-sizer">
+      <div class="grid-item">
+        <a href="{{ profile.permalink }}">
+          <div class="card">
+            {% if profile.picture -%}
+            <img class="card-photo" src="/assets/img/{{profile.picture}}" alt="Portrait ({{profile.name}})">
+            {%- else -%}
+            <img class="card-photo" src="/assets/img/people-default.jpg" alt="Portrait ({{profile.name}})">
+            {%- endif -%}
+            <div class="card-body">
+              <h2 class="card-title">{{profile.name}}</h2>
+              <div class="card-text">
+                {{profile.description}}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+  {% endif %}
+
+  <h2 class="category">You?</h2>
+  Join us! <a href="/jobs">→Open positions</a>
+
+  <div class="clearfix">
+    {{ content }}
+  </div>
+
+</div>

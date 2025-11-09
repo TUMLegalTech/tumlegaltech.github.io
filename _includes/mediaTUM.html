@@ -1,0 +1,19 @@
+<!-- _includes/mediaTUM.html -->
+<div class="publications">
+<script src="https://mediatum.ub.tum.de/static/js/export.js"> </script>
+<script>
+    mediatum_config = {
+        'fields0':['<small style="color:red">[att:pos]</small>',
+                   '[att:author-contrib]', '<b>[att:title-contrib]</b>',
+                   '[att:year|substring:0,4]' ],
+                   'type0':['struct','search','asc'],
+                   'target':'internal',
+                   'style':'0',
+                   'output':'apa',
+                   'groupby':'year',
+    };
+</script>
+<script>
+    mediatum_load(615843, 0, '-year','', '', 'en');
+</script>
+</div>

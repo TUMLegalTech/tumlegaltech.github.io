@@ -1,51 +1,36 @@
 ---
-layout: page
+layout: default
 ---
 
 <!-- about.html -->
-      <div class="post">
+<div class="post">
+  <div class="d-flex align-items-center mb-4">
+    <div class="flex-grow-1 d-flex align-items-center justify-content-start" style="min-height: 150px;">
+      <div>
+        <h1 class="post-title mb-2">{{ page.title }}</h1>
+        <p class="post-description mb-0">{{ page.description }}</p>
+      </div>
+    </div>
+    <div class="ms-4" style="max-width: 230px; flex-shrink: 0;">
+      {% if page.picture -%}
+      <img class="profile-photo mr-5" src="/assets/img/{{page.picture}}" alt="Portrait ({{page.name}})">
+      {%- else -%}
+      <img class="profile-photo" src="/assets/img/people-default.jpg" alt="Portrait ({{page.name}})">
+      {%- endif -%}
+      
+      {% if page.social %}
+      <div class="text-center mt-3">
+        {% include social_profiles.html %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  {{ content }}
 
-        <article>
-          {% if page.profiles -%}
-          {% for profile in page.profiles %}
-          <hr>
-          <div class="profile float-{%- if profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-            {%- if profile.image %}
-              {%- assign profile_image_path = profile.image | prepend: 'assets/img/' -%}
-
-              {% if profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-              {% endif %}
-
-              {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
-
-              {% include figure.html
-                path = profile_image_path
-                class = profile_image_class
-                sizes = sizes
-                alt = profile.image 
-              %}
-            {% endif -%}
-            {%- if profile.more_info %}
-            <div class="more-info">
-              {{ profile.more_info }}
-            </div>
-            {%- endif %}
-          </div>
-
-          <div class="clearfix">
-            {% if profile.content -%}
-            {% capture profile_content %}{%- include_relative {{ profile.content }} %}{% endcapture %}
-            {{ profile_content | markdownify }}
-            {%- else -%}
-            {{ content }}
-            {%- endif %}
-          </div>
-
-          {% endfor %}
-          {%- endif %}
-        </article>
-
+  <div class="social">
+    <div class="contact-icons">
+      {% include social_profiles.html %}
+    </div>
+  </div>
 </div>

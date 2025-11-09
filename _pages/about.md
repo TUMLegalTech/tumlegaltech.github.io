@@ -13,9 +13,10 @@ profile:
     <p>85748 Garching, Germany</p>
 
 news: true  # includes a list of news items
-latest_posts: true  # includes a list of the newest posts
+latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
+funding: true # includes funding information at the bottom of the page
 ---
 
 The professorship in Legal Tech conducts research and development around the application of methods from artificial intelligence, machine learning, data science, natural language processing, and knowledge engineering towards solving tasks and problems arising in the practice of law and public administration. High level goals are to:
