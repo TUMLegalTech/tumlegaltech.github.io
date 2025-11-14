@@ -3,7 +3,7 @@ layout: profiles
 title: Sebastian Nagl
 name: Sebastian Nagl
 description: Ph.D. Student
-img: /assets/img/sebastian.png
+img: /assets/img/sebastian.jpeg
 tags: formatting links
 category: Research Associates
 permalink: /people/sebastian-nagl/
