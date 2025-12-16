@@ -1288,3 +1288,19 @@ nav[data-toggle="toc"] {
 #toc-sidebar {
   z-index: 1;
 }
+
+/* LegisLLM carousel: use black controls/indicators */
+#legisllm-carousel {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(1) grayscale(1);
+  }
+
+  .carousel-indicators li {
+    background-color: #000;
+  }
+
+  .carousel-indicators .active {
+    background-color: #000;
+  }
+}
