@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Thesis Mentoring
+title: thesis mentoring
 description: Information on thesis mentoring in the TUM Legal Tech group
 permalink: /thesis_mentoring/
 nav: true
