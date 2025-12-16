@@ -311,6 +311,11 @@ blockquote {
 }
 
 .navbar.navbar-light {
+
+  .container {
+    max-width: 100%; /* keep navbar full-width so nowrap items don't overflow */
+  }
+  
   a {
     &:hover {
       text-decoration: none;
