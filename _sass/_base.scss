@@ -2,6 +2,17 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
+/* Global opt-out of motion */
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+}
+html {
+  scroll-behavior: auto !important;
+}
+
 // Typography
 
 p,
