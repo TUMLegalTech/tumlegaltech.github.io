@@ -2,6 +2,17 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
+/* Global opt-out of motion */
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+}
+html {
+  scroll-behavior: auto !important;
+}
+
 // Typography
 
 p,
@@ -248,12 +259,8 @@ blockquote {
   border-radius: 50%;
   overflow: hidden;
   margin-right: 4rem;
-}
-
-.profile-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* crop without distortion */
+  display: block;
 }
 
 .image-link img {
@@ -304,6 +311,11 @@ blockquote {
 }
 
 .navbar.navbar-light {
+
+  .container {
+    max-width: 100%; /* keep navbar full-width so nowrap items don't overflow */
+  }
+  
   a {
     &:hover {
       text-decoration: none;
@@ -1287,4 +1299,20 @@ nav[data-toggle="toc"] {
 
 #toc-sidebar {
   z-index: 1;
+}
+
+/* LegisLLM carousel: use black controls/indicators */
+#legisllm-carousel {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(1) grayscale(1);
+  }
+
+  .carousel-indicators li {
+    background-color: #000;
+  }
+
+  .carousel-indicators .active {
+    background-color: #000;
+  }
 }

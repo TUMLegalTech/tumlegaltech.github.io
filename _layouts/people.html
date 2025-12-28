@@ -19,8 +19,10 @@ layout: page
       <div class="grid-item">
         <a href="{{ profile.permalink }}">
           <div class="card">
-            {% if profile.picture -%}
-            <img class="card-photo" src="/assets/img/{{profile.picture}}" alt="Portrait ({{profile.name}})">
+            {% assign photo = profile.picture | default: profile.img -%}
+            {% if photo -%}
+            {% assign photo_path = photo | remove_first: "/assets/img/" | prepend: "/assets/img/" -%}
+            <img class="card-photo" src="{{ photo_path }}" alt="Portrait ({{profile.name}})">
             {%- else -%}
             <img class="card-photo" src="/assets/img/people-default.jpg" alt="Portrait ({{profile.name}})">
             {%- endif -%}

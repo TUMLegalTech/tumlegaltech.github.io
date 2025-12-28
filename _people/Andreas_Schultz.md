@@ -3,7 +3,7 @@ layout: profiles
 title: Andreas Schultz
 name: Andreas Schultz
 description: Research associate
-img: /assets/img/andreasschultz.jpeg
+img: /assets/img/andreasschultz.jpg
 tags: formatting links
 category: Research Associates
 permalink: /people/andreas-schultz/

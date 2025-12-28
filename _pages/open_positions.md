@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Open Positions
+title: open positions
 description: Open positions in the TUM Legal Tech group
 permalink: /open_positions/
 nav: true
