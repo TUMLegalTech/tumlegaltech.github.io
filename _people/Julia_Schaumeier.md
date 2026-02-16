@@ -1,0 +1,11 @@
+---
+layout: profiles
+title: Julia Schaumeier
+name: Julia Schaumeier
+description: Postdoctoral Associate
+tags: formatting links
+img: /assets/img/julia_schaumeier_profil.jpg
+category: Research Associates
+permalink: /people/julia-schaumeier/
+room: 5612.01.035
+---

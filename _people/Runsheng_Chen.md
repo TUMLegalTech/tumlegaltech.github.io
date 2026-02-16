@@ -1,11 +1,11 @@
 ---
 layout: profiles
-title: Max Prior
-name: Max Prior
+title: Runsheng Chen
+name: Runsheng Chen
 description: Ph.D. Student
-img: /assets/img/max_prior_profil.jpeg
 tags: formatting links
+img: /assets/img/runsheng_chen_profil.jpeg
 category: Research Associates
-permalink: /people/max-prior/
+permalink: /people/runsheng-chen/
 room: 5612.01.035
 ---

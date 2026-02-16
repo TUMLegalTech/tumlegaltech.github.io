@@ -1,11 +1,11 @@
 ---
 layout: profiles
-title: Max Prior
-name: Max Prior
+title: Julius Vernie
+name: Julius Vernie
 description: Ph.D. Student
-img: /assets/img/max_prior_profil.jpeg
 tags: formatting links
+img: /assets/img/julius_vernie_profil.jpeg
 category: Research Associates
-permalink: /people/max-prior/
+permalink: /people/julius-vernie/
 room: 5612.01.035
 ---

@@ -2,10 +2,10 @@
 layout: profiles
 title: Shanshan Xu
 name: Shanshan Xu
-description: Ph.D. Student
+description: Ph.D. defended Dec. 2025; Postdoc @ NLP North Uni Copenhagen
 img: /assets/img/shanshan.jpeg
 tags: formatting links
-category: Research Associates
+category: Alumni
 permalink: /people/shanshan-xu/
 email: shanshan.xu[at]tum.de
 homepage: https://sxu.notion.site/
