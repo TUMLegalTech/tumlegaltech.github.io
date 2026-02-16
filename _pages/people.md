@@ -3,7 +3,7 @@ layout: page
 title: people
 permalink: /people/
 description: members of the TUM Legal Tech group
-display_categories: [Research Group Lead, Research Associates, Nonresident Fellows, Student Research Assistants, Administrative Support, Alumni]
+display_categories: [Research Group Lead, Research Associates, Nonresident Fellows, Student Research Assistants, Alumni]
 nav: true
 nav_order: 1
 horizontal: false
