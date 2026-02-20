@@ -18,9 +18,6 @@ use_mediaTUM: false
   {% assign years = site.scholar.bibliography | map: "year" | uniq | sort %}
   <select id="year-filter">
     <option value="all">All Years</option>
-    {% for year in years %}
-      <option value="{{ year }}">{{ year }}</option>
-    {% endfor %}
   </select>
 
   {% assign author_names = site.people | map: "name" %}
@@ -52,6 +49,24 @@ document.addEventListener('DOMContentLoaded', function () {
   const yearFilter = document.getElementById('year-filter');
   const authorFilter = document.getElementById('author-filter');
   const typeFilter = document.getElementById('type-filter');
+
+  const yearHeadings = Array.from(
+    document.querySelectorAll('.publications h2.bibliography')
+  )
+    .map(h => (h.textContent || '').trim())
+    .filter(t => /^\d{4}$/.test(t));
+
+  const uniqueYears = Array.from(new Set(yearHeadings))
+    .sort((a, b) => Number(b) - Number(a));
+
+  yearFilter.querySelectorAll('option:not(:first-child)').forEach(o => o.remove());
+
+  uniqueYears.forEach(y => {
+    const opt = document.createElement('option');
+    opt.value = y;
+    opt.textContent = y;
+    yearFilter.appendChild(opt);
+  });
 
   function filterPublications() {
     const selectedYear = yearFilter.value;
