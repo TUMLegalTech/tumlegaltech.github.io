@@ -1,0 +1,27 @@
+- name: Daimler und Benz Stiftung
+  url: https://www.daimler-benz-stiftung.de/
+  logo: /assets/img/supporters/daimler-benz-stiftung.png
+
+- name: BMBF
+  url: https://www.bmbf.de/
+  logo: /assets/img/supporters/bmbf.png
+
+- name: BMF
+  url: https://www.bundesfinanzministerium.de/Web/DE/Home/home.html
+  logo: /assets/img/supporters/bmf.png
+
+- name: Justiz Bayern
+  url: https://www.justiz.bayern.de/
+  logo: /assets/img/supporters/justiz-bayern.jpeg
+
+- name: BMJ
+  url: https://www.bmj.de/
+  logo: /assets/img/supporters/bmjv.png
+
+- name: NRW Justiz
+  url: https://www.justiz.nrw.de/
+  logo: /assets/img/supporters/nrw-justiz.jpeg
+
+- name: SINC GmbH
+  url: https://www.sinc.de/
+  logo: /assets/img/supporters/sinc-gmbh.png

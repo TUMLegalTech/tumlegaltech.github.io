@@ -1,0 +1,32 @@
+/* Supporters grid */
+
+.supporters{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+  margin-top: 30px;
+}
+
+.supporter{
+  background: white;
+  border-radius: 14px;
+  padding: 28px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.supporter:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+}
+
+.supporter img{
+  max-height: 70px;
+  max-width: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
