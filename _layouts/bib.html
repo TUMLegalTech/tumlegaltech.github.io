@@ -1,7 +1,11 @@
 ---
 ---
 <!-- _layouts/bib.html -->
-<div class="row" data-year="{{ entry.year || '' }}" data-author="{{ entry.author | join: ', ' || '' }}">
+<!-- <div class="row" data-year="{{ entry.year || '' }}" data-author="{{ entry.author | join: ', ' || '' }}"> -->
+<div class="row"
+     data-year="{{ entry.year | default: '' }}"
+     data-author="{{ entry.author | join: ', ' | default: '' }}"
+     data-keywords="{% if entry.keywords %}{{ entry.keywords | join: ',' }}{% else %}{% endif %}">
   {%- if site.enable_publication_thumbnails -%}
   <div class="col-sm-2 {% if entry.preview %}preview{% else %}abbr{% endif %}">
     {%- if entry.preview -%}
