@@ -6,6 +6,7 @@ description: MS in Informatics, Student Research Assistant
 img: /assets/img/rashid.jpeg
 tags: formatting links
 category: Student Research Assistants
+importance: 1
 permalink: /people/rashid-haddad/
 research_interests:
   - Legal Tech

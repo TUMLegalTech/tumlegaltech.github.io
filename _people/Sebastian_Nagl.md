@@ -6,6 +6,7 @@ description: Ph.D. Student
 img: /assets/img/sebastian.jpeg
 tags: formatting links
 category: Research Associates
+importance: 4
 permalink: /people/sebastian-nagl/
 research_interests:
   - Legal Tech
