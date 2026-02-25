@@ -1,0 +1,62 @@
+---
+permalink: /llms.txt
+---
+# TUM Legal Tech Group
+
+> The Professorship in Legal Tech at the Technical University of Munich (TUM), led by Prof. Dr. Matthias Grabmair, conducts research on AI, NLP, and machine learning applied to law and public administration.
+
+## Research Focus Areas
+- Legal Natural Language Processing (Legal NLP)
+- AI in Legal Advocacy and Decision Making (European Court of Human Rights, German courts)
+- Legal Text Summarization and Generation
+- Statutory Article Retrieval and Legal Information Retrieval
+- Legal Argumentation Mining and Computational Models of Legal Reasoning
+- Digital-Ready Legislation / Rules as Code
+- Legal Benchmarking (BenGER - Benchmark for German Law)
+
+## Key Projects
+- **Digital-Ready Tax Law (Digitaltaugliches Steuerrecht)**: AI-supported legislative drafting (LegisLLM), compliance cost automation, legal reference networks. Funded by German Federal Ministry of Finance. In collaboration with LMUDigiTax.
+- **BenGER – Benchmark for German Law**: A holistic benchmark and platform for evaluating AI systems in German law. Community-driven dataset collection, supports 50+ large language models. Website: what-a-benger.net
+- **TITAN**: Interdisciplinary research consortium on robust AI in the German justice system. Led by TU Braunschweig, funded by Daimler und Benz Stiftung.
+- **GSJ (Generative Language Model for the Judiciary)**: Systems to support judicial decision making with generative AI.
+
+## Selected Publications
+- Wais, Prior, Chen (2026): "AppeaLLM: Mimicking a Closed-World Environment for Court Decision Prediction" - ACM CS&LAW 2026
+- Zhang, Grabmair, Gray, Ashley (2026): "Thinking Longer, Not Always Smarter: Evaluating LLM Capabilities in Hierarchical Legal Reasoning" - ACM CS&LAW 2026
+- Santosh, Grabmair (2025): "LexGenie: Automated Generation of Structured Reports for ECHR Case Law" - ACL Industry 2025
+- Schultz, Grabmair (2025): "KI-gestutzte Gesetzgebung" - KIR 2025
+- Xu et al. (2024): "LegalDiscourse: Language Model for Long Legal Document Comprehension" - NAACL 2024
+- Santosh et al. (2024): "Deconfounding Legal Judgment Prediction for European Court of Human Rights Cases" - ACL Findings 2024
+- Xu, Osei, Grabmair (2024): "A Benchmark for Crime-Related Text in German" - LREC-COLING 2024
+- Santosh et al. (2022): "Deconfounding Legal Judgment Prediction for European Court of Human Rights Cases" - NLLP Workshop @ EMNLP
+
+## Group Lead
+- Prof. Dr. Matthias Grabmair: Tenure-track Assistant Professor of Legal Tech, Co-Editor-in-Chief of Journal of AI & Law, co-founder of ASAIL Workshop Series. Background: Ph.D. University of Pittsburgh, LL.M., Diploma in Law (University of Augsburg). Former CMU Language Technologies Institute.
+
+## Team
+- Research Associates: Julia Schaumeier, Max Prior, Andreas Schultz, Sebastian Nagl, Niklas Wais, Mohamed Elganayni, Runsheng Chen, Julius Vernie, Simon Hochstraßer
+- Student Research Assistants: Rashid Haddad, Melanie Pospisil, Elly Breu, Angelina Greiner, Moritz Haid, Quirin Pelikan, Sofija Milijas
+- Nonresident Fellow: Oana Ichim (Graduate Institute Geneva)
+- Alumni: Shanshan Xu (Postdoc @ NLP North, University of Copenhagen), Tokala Santosh (Applied Scientist @ Amazon)
+
+## Funding
+- German Federal Ministry of Finance (BMF)
+- German Federal Ministry for Research and Technology (BMFTR)
+- German Federal Ministry of Justice (BMJ)
+- Bavarian Ministry of Justice (Justiz Bayern)
+- North Rhine-Westphalia Ministry of Justice (NRW Justiz)
+- Daimler und Benz Stiftung
+- SINC GmbH
+
+## Contact
+- Address: Boltzmannstr. 3/I, 85748 Garching, Germany
+- Website: https://tum-legal-tech.github.io
+- Institutional page: https://www.cs.cit.tum.de/lt/home/
+- GitHub: https://github.com/tumlegaltech
+
+## Links
+- Publications: https://tum-legal-tech.github.io/publications/
+- Projects: https://tum-legal-tech.github.io/projects/
+- People: https://tum-legal-tech.github.io/people/
+- Teaching: https://tum-legal-tech.github.io/teaching/
+- BenGER Platform: http://what-a-benger.net

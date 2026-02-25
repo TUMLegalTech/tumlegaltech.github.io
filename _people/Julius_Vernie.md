@@ -6,6 +6,11 @@ description: Ph.D. Student
 tags: formatting links
 img: /assets/img/julius_vernie_profil.jpeg
 category: Research Associates
+importance: 8
 permalink: /people/julius-vernie/
 room: 5612.01.035
+research_interests:
+  - Legal NLP
+  - Computational Models of Legislations
+  - Patent Analytics
 ---

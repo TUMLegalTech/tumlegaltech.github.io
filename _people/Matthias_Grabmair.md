@@ -10,6 +10,11 @@ permalink: /people/matthias-grabmair/
 email: matthias.grabmair[at]tum.de
 scholar_userid: MroPEGsAAAAJ
 x_username: matgrabmair
+research_interests:
+  - Legal NLP
+  - Computational Models of Legal Argumentation
+  - Computational Representations of Legislation
+  - Legal Information Retrieval
 ---
 Matthias Grabmair is a tenure-track Assistant Professor of Legal Tech in the [Department of Informatics](https://www.in.tum.de/en/cover-page/) at the Technical University of Munich. Before joining TUM in January 2021, he worked as a Legal Data Scientist at the German legal informatics company [SINC](https://www.sinc.de/) (2019-2020). Prior to that, he spent four years at Carnegie Mellon University's [Language Technologies Institute](https://www.lti.cs.cmu.edu/) working with [Prof. Eric Nyberg](https://www.cs.cmu.edu/~ehn/) as a Visiting Researcher, Postdoc, and Systems Scientist (2015-2019). He obtained a diploma in law from the [University of Augsburg](https://www.uni-augsburg.de/en/fakultaet/jura/), Germany, as well as a Master of Laws (LL.M.) and Ph.D. in Intelligent Systems mentored by [Prof. Kevin Ashley](https://www.lrdc.pitt.edu/people/researcher-detail.cshtml?id=32) from the University of Pittsburgh.
 

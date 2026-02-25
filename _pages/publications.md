@@ -2,6 +2,8 @@
 layout: page
 permalink: /publications/
 title: publications
+description: "Publications by the TUM Legal Tech Group on legal NLP, court decision prediction, legal argumentation, statutory article retrieval, and AI in law."
+keywords: "legal NLP publications, legal AI research papers, court decision prediction, legal text summarization, European Court of Human Rights NLP"
 nav: true
 nav_order: 3
 use_mediaTUM: false

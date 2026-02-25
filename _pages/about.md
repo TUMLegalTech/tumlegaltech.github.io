@@ -2,16 +2,13 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://www.cs.cit.tum.de/lt/home/'>Technical University Munich</a>. Garching, Germany.
+description: "TUM Legal Tech Group: AI, NLP, and machine learning research applied to law, judicial decision support, and legal text processing at the Technical University of Munich."
+keywords: "legal tech, legal NLP, AI and law, computational legal reasoning, TUM, Matthias Grabmair, legal advocacy, court decision prediction, digital-ready legislation, legal benchmarking"
 
 profile:
   align: right
   image: mi_building.jpeg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Boltzmannstr. 3</p>
-    <p>85748 Garching, Germany</p>
-
 news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
@@ -19,24 +16,16 @@ social: true  # includes social icons at the bottom of the page
 funding: true # includes funding information at the bottom of the page
 ---
 
-The professorship in Legal Tech conducts research and development around the application of methods from artificial intelligence, machine learning, data science, natural language processing, and knowledge engineering towards solving tasks and problems arising in the practice of law and public administration. High level goals are to:
+The TUM Legal Tech Group develops AI systems that make law more accessible, transparent, and efficient. Our research combines natural language processing, machine learning, and computational legal reasoning to tackle real-world challenges in courts, legislatures, and public administration.
 
-<ul>
-  <li>Support judicial decision making</li>
-  <li>Facilitate access to justice</li>
-  <li>Enable effective research in collections of legal documents</li>
-  <li>Enhance processes in public administration and legal practice</li>
-</ul>
+Our work spans:
+- **Legal NLP** — processing, summarizing, and generating legal text, with a focus on integrating domain expertise into language models
+- **AI in legal advocacy and decision making** — modeling judicial reasoning for European and German courts
+- **Digital-ready legislation** — AI-supported legislative drafting and compliance automation
+- **Legal benchmarking** — building evaluation frameworks to rigorously assess AI performance on legal tasks
 
-Currently, specific technical areas of focus include:
-<ul>
-  <li>Natural language processing of legal text, in particular with regard to effectively combining it with legal expertise</li>
-  <li>Information retrieval on legal text</li>
-  <li>Computational models of legal inference and argumentation (i.e. rule- and case-based reasoning)</li>
-</ul>
-
-<!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
-
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them. -->
+We collaborate closely with federal and state ministries, courts, legal scholars, and legal practitioners to ensure our research translates into practice. Current projects include:
+- [**Digital-Ready Tax Law**](/projects/1_project/) — AI-supported legislative drafting for German tax law
+- [**Generative Language Model for the Judiciary (GSJ)**](/projects/2_project/) — developing generative AI to support judicial decision making
+- [**TITAN**](/projects/3_project/) — interdisciplinary research on robust AI deployment in the German justice system
+- [**BenGER**](/projects/4_project/) — a holistic benchmark and platform for evaluating LLM-based systems in German law

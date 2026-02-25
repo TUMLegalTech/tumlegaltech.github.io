@@ -6,6 +6,11 @@ description: Ph.D. Student
 tags: formatting links
 img: /assets/img/mohamed_elganayni_profil.jpeg
 category: Research Associates
+importance: 6
 permalink: /people/mohamed-elganayni/
 room: 5612.01.035
+research_interests:
+  - Legal NLP
+  - Training & Adapting Large Language Models
+  - LLM Benchmarking
 ---

@@ -2,7 +2,8 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Introducing the projects the team is currently working on.
+description: "Research projects by the TUM Legal Tech Group: digital-ready legislation, AI for judiciary, legal benchmarking (BenGER), and court decision prediction."
+keywords: "legal tech projects, Rules as Code, digital-ready law, legal AI benchmark, judicial AI, LegisLLM, BenGER, TITAN"
 nav: true
 nav_order: 4
 display_categories: [work, fun]

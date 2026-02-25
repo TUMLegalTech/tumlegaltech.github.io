@@ -218,6 +218,138 @@
         {%- assign sameaslinks = sameaslinks | split: "" -%}
     {%- endif -%}
 
+    {%- if page.url == "/" %}
+    <!-- ResearchOrganization schema for homepage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ResearchOrganization",
+        "name": "TUM Legal Tech Group",
+        "alternateName": "Professorship in Legal Tech, Technical University of Munich",
+        "url": "{{ site.url }}",
+        "logo": "{{ '/assets/img/mi_building.jpeg' | prepend: site.url }}",
+        "description": "{{ site.description | strip_newlines | strip }}",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Boltzmannstr. 3/I",
+            "addressLocality": "Garching",
+            "postalCode": "85748",
+            "addressCountry": "DE"
+        },
+        "parentOrganization": {
+            "@type": "CollegeOrUniversity",
+            "name": "Technical University of Munich",
+            "url": "https://www.tum.de"
+        },
+        "knowsAbout": [
+            "Legal Natural Language Processing",
+            "AI in Legal Advocacy and Decision Making",
+            "Court Decision Prediction",
+            "Legal Argumentation Mining",
+            "Legal Text Summarization",
+            "Statutory Article Retrieval",
+            "Digital-Ready Legislation",
+            "Legal Benchmarking",
+            "Computational Legal Reasoning"
+        ],
+        "member": [
+            {%- assign member_list = "" | split: "" -%}
+            {%- for person in site.people -%}
+                {%- if person.category == "Research Group Lead" or person.category == "Research Associates" -%}
+                    {%- capture member_json -%}{"@type": "Person", "name": "{{ person.name }}", "url": "{{ person.url | prepend: site.baseurl | prepend: site.url }}"}{%- endcapture -%}
+                    {%- assign member_list = member_list | push: member_json -%}
+                {%- endif -%}
+            {%- endfor -%}
+            {{ member_list | join: ", " }}
+        ]
+        {%- if sameaslinks != blank %},
+        "sameAs": {{ sameaslinks }}
+        {%- endif %}
+    }
+    </script>
+
+    {%- elsif page.layout == "profiles" %}
+    <!-- Person schema for team member profiles -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ page.name }}",
+        "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+        "jobTitle": "{{ page.description }}",
+        {%- if page.img %}
+        "image": "{{ page.img | prepend: site.url }}",
+        {%- endif %}
+        "affiliation": {
+            "@type": "ResearchOrganization",
+            "name": "TUM Legal Tech Group",
+            "url": "{{ site.url }}"
+        },
+        "worksFor": {
+            "@type": "CollegeOrUniversity",
+            "name": "Technical University of Munich"
+        }
+        {%- if page.email %},
+        "email": "{{ page.email | replace: '[at]', '@' }}"
+        {%- endif %}
+        {%- assign person_links = "" | split: "" -%}
+        {%- if page.scholar_userid -%}
+            {%- capture sl -%}https://scholar.google.com/citations?user={{ page.scholar_userid }}{%- endcapture -%}
+            {%- assign person_links = person_links | push: sl -%}
+        {%- endif -%}
+        {%- if page.x_username -%}
+            {%- capture sl -%}https://twitter.com/{{ page.x_username }}{%- endcapture -%}
+            {%- assign person_links = person_links | push: sl -%}
+        {%- endif -%}
+        {%- if page.linkedin_username -%}
+            {%- capture sl -%}https://www.linkedin.com/in/{{ page.linkedin_username }}{%- endcapture -%}
+            {%- assign person_links = person_links | push: sl -%}
+        {%- endif -%}
+        {%- if page.orcid_id -%}
+            {%- capture sl -%}https://orcid.org/{{ page.orcid_id }}{%- endcapture -%}
+            {%- assign person_links = person_links | push: sl -%}
+        {%- endif -%}
+        {%- if person_links != blank %},
+        "sameAs": [
+            {%- for link in person_links -%}
+            "{{ link }}"{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+        ]
+        {%- endif %}
+        {%- if page.research_interests %},
+        "knowsAbout": {{ page.research_interests | jsonify }}
+        {%- endif %}
+    }
+    </script>
+
+    {%- elsif page.collection == "projects" %}
+    <!-- ResearchProject schema for project pages -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ResearchProject",
+        "name": "{{ page.title }}",
+        "description": "{{ page.description }}",
+        "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+        "memberOf": {
+            "@type": "ResearchOrganization",
+            "name": "TUM Legal Tech Group",
+            "url": "{{ site.url }}"
+        }
+        {%- if page.funding %},
+        "funder": {
+            "@type": "Organization",
+            "name": "{{ page.funding }}"
+        }
+        {%- endif %}
+        {%- if page.keywords %},
+        "keywords": "{{ page.keywords }}"
+        {%- endif %}
+    }
+    </script>
+
+    {%- else %}
+    <!-- Generic schema for other pages -->
     <script type="application/ld+json">
     {
         "author":
@@ -236,4 +368,5 @@
         "@context": "https://schema.org"
     }
     </script>
+    {%- endif %}
 {%- endif %}

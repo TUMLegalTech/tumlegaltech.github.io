@@ -2,8 +2,9 @@
 layout: page
 title: people
 permalink: /people/
-description: members of the TUM Legal Tech group
-display_categories: [Research Group Lead, Research Associates, Nonresident Fellows, Student Research Assistants, Alumni]
+description: "Researchers and team members of the TUM Legal Tech Group working on AI-driven legal technology, legal NLP, and computational law."
+keywords: "TUM Legal Tech researchers, legal NLP researchers, AI and law team, Matthias Grabmair group"
+display_categories: [Research Group Lead, Research Associates, Nonresident Fellows, Student Research Assistants, Canine Research Fellow, Alumni]
 nav: true
 nav_order: 1
 horizontal: false

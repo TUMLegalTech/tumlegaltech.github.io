@@ -6,6 +6,11 @@ img: assets/img/robotinparliament.png
 importance: 1
 category: work
 related_publications: schultz2025KI
+keywords: "Rules as Code, digital-ready legislation, LegisLLM, AI-supported legislative drafting, compliance cost automation, tax law NLP"
+funding: "German Federal Ministry of Finance (BMF)"
+partners:
+  - "LMUDigiTax (Ludwig Maximilian University of Munich)"
+status: "Active"
 ---
 Working together with the [Center for Digitalization of Tax Law at Ludwig Maximilian University of Munich (LMUDigiTax)](https://www.lmudigitax.uni-muenchen.de/index.html) and funded by the German Federal Ministry of Finance, we are conducting the study "Digital-Ready Tax Law" (Digitaltaugliches Steuerrecht). The study builds upon an existing partnership in which hackathons have already been organized, focusing on the formalization of tax law provisions using low/no-code tools and legislative drafting that conforms to principles of digital execution. 
 

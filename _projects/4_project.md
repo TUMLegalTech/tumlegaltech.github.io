@@ -5,6 +5,10 @@ description: A holistic benchmark and platform for evaluating AI systems in Germ
 img: assets/img/benger/screenshot1.png
 importance: 1
 category: work
+keywords: "legal benchmark, German law evaluation, LLM evaluation, BenGER, legal AI assessment"
+funding: "Daimler und Benz Stiftung (via TITAN)"
+website: "http://what-a-benger.net"
+status: "Active"
 ---
 
 Als Teil des Arbeitspakets unserer Gruppe im Projekt Titan erarbeiten wir im Rahmen einer offenen Kooperation eine holistische Benchmark für das deutsche Recht. Dabei erstellen wir zunächst die nötige Infrastruktur (die Plattform) für uns und die Community, und sammeln dann in großem Stil Aufgaben, Daten und Annotationen, um in einem Rundumschlag die Performance sämtlicher state of the art Modelle zusammen mit robusten menschlichen Baselines zu veröffentlichen (Datensatz).

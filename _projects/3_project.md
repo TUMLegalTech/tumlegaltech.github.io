@@ -5,6 +5,14 @@ description: Technologische Intelligenz zur Transformation, Automatisierung und 
 img: assets/img/titan/titan.png
 importance: 2
 category: work
+keywords: "AI in judiciary, legal AI quality criteria, German justice system, interdisciplinary research"
+funding: "Daimler und Benz Stiftung"
+partners:
+  - "TU Braunschweig (lead)"
+  - "University of Freiburg (Psychology)"
+  - "TUM (BWL)"
+status: "Active"
+duration: "2 years"
 ---
 
 Als Teil eines universitätsübergreifenden und interdisziplinären Forschungsverbundes unter Leitung der TU Braunschweig und mit Finanzierung durch die Daimler-Benz Stiftung erforschen wir Möglichkeiten eines robusten Einsatzes Künstlicher Intelligenz im deutschen Rechtswesen. Das Projekt ist auf eine Arbeitszeit von zwei Jahren angelegt.

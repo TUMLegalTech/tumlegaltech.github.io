@@ -6,14 +6,14 @@ title: TUM Legal Tech Group # the website title (if blank, full name will be use
 first_name: Matthias
 middle_name: null
 last_name: Grabmair
-email: TODO add general mail
+email: # TODO: add group contact email
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   The official webpage of the TUM Legal Tech research group.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 
-keywords: law, legal tech, nlp  # add your own keywords or leave empty
+keywords: legal tech, legal NLP, natural language processing, AI and law, legal advocacy, court decision prediction, digital-ready legislation, legal benchmarking, computational legal reasoning, legal text mining, TUM, Technical University of Munich
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚖️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -60,15 +60,15 @@ max_width: 800px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
+og_image: /assets/img/mi_building.jpeg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: # your GitHub user name
+github_username: tumlegaltech # your GitHub user name
 gitlab_username: # your GitLab user name
 x_username: # your X handle
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
@@ -125,7 +125,7 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 profile:
-  image-circular: false # set to true to display people images in a circular shape
+  image-circular: true # set to true to display people images in a circular shape
 
 # -----------------------------------------------------------------------------
 # Blog
@@ -276,7 +276,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ['robots.txt']
+  exclude: ['robots.txt', 'llms.txt']
   uglifier_args:
     harmony: true
 

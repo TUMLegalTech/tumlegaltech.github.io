@@ -6,5 +6,9 @@ description: Ph.D. Student
 tags: formatting links
 img: /assets/img/simon_hochstrasser_profil.jpeg
 category: Research Associates
+importance: 9
 permalink: /people/simon-hochstrasser/
+research_interests:
+  - Tax Law Digitization
+  - AI-Supported Legislative Drafting
 ---
