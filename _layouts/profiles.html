@@ -9,6 +9,13 @@ layout: default
       <div>
         <h1 class="post-title mb-2">{{ page.title }}</h1>
         <p class="post-description mb-0">{{ page.description }}</p>
+        {%- if page.research_interests %}
+        <div class="research-interests mt-2">
+          {%- for interest in page.research_interests %}
+          <span class="badge badge-primary">{{ interest }}</span>
+          {%- endfor %}
+        </div>
+        {%- endif %}
       </div>
     </div>
     <div class="ms-4" style="max-width: 230px; flex-shrink: 0;">

@@ -1,7 +1,8 @@
 ---
 layout: page
 title: thesis mentoring
-description: Information on thesis mentoring in the TUM Legal Tech group
+description: "Bachelor and master thesis opportunities at TUM Legal Tech Group in legal data analytics, legal NLP, and knowledge representation for law."
+keywords: "legal tech thesis, TUM bachelor thesis, master thesis legal NLP, legal AI thesis topics"
 permalink: /thesis_mentoring/
 nav: true
 nav_order: 5

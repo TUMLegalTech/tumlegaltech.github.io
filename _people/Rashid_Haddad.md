@@ -7,5 +7,8 @@ img: /assets/img/rashid.jpeg
 tags: formatting links
 category: Student Research Assistants
 permalink: /people/rashid-haddad/
+research_interests:
+  - Legal Tech
+  - Data Management
 ---
 Rashid is in the final year of his Masters in Informatics at TUM and supports the chair with server and database management.

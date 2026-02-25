@@ -7,6 +7,10 @@ img: /assets/img/andreasschultz.jpg
 tags: formatting links
 category: Research Associates
 permalink: /people/andreas-schultz/
+research_interests:
+  - Digital-Ready Legislation
+  - Tax Law Digitization
+  - AI-Supported Legislative Drafting
 ---
 
 Andreas Schultz is a research associate in the Legal Tech Working Group at the Technical University of Munich since October 2024. 

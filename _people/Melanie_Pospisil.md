@@ -7,4 +7,8 @@ tags: formatting links
 img: /assets/img/melanie_pospisil_profil.jpeg
 category: Student Research Assistants
 permalink: /people/melanie-pospisil/
+research_interests:
+  - Legal Tech
+  - Mathematics
+  - Data Analysis
 ---

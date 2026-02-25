@@ -2,7 +2,8 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Courses at the Chair
+description: "Courses and seminars offered by the TUM Legal Tech Group on legal technology, legal NLP, and AI applications in law."
+keywords: "legal tech courses, TUM legal technology teaching, legal NLP seminar, AI and law education"
 nav: true
 nav_order: 2
 display_categories: ["2025", "2024/25"]

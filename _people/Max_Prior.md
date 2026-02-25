@@ -8,4 +8,8 @@ tags: formatting links
 category: Research Associates
 permalink: /people/max-prior/
 room: 5612.01.035
+research_interests:
+  - Court Decision Prediction
+  - Legal NLP
+  - Machine Learning
 ---

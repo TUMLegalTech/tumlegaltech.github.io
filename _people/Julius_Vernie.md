@@ -8,4 +8,8 @@ img: /assets/img/julius_vernie_profil.jpeg
 category: Research Associates
 permalink: /people/julius-vernie/
 room: 5612.01.035
+research_interests:
+  - Legal NLP
+  - Natural Language Processing
+  - Legal AI
 ---

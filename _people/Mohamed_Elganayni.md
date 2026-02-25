@@ -8,4 +8,8 @@ img: /assets/img/mohamed_elganayni_profil.jpeg
 category: Research Associates
 permalink: /people/mohamed-elganayni/
 room: 5612.01.035
+research_interests:
+  - Legal NLP
+  - Natural Language Processing
+  - Machine Learning
 ---

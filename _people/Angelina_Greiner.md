@@ -7,4 +7,7 @@ tags: formatting links
 img: /assets/img/angelina_greiner_profil.jpeg
 category: Student Research Assistants
 permalink: /people/angelina-greiner/
+research_interests:
+  - Legal Tech
+  - Law and Technology
 ---

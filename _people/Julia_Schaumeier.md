@@ -8,4 +8,8 @@ img: /assets/img/julia_schaumeier_profil.jpg
 category: Research Associates
 permalink: /people/julia-schaumeier/
 room: 5612.01.035
+research_interests:
+  - Legal NLP
+  - Legal Information Retrieval
+  - Computational Law
 ---

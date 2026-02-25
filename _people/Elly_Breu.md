@@ -7,4 +7,7 @@ tags: formatting links
 img: /assets/img/elly_breu_profil.jpeg
 category: Student Research Assistants
 permalink: /people/elly-breu/
+research_interests:
+  - Legal Tech
+  - Law and Technology
 ---
