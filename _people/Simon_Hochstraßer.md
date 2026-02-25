@@ -1,0 +1,10 @@
+---
+layout: profiles
+title: Simon Hochstraßer
+name: Simon Hochstraßer
+description: Ph.D. Student
+tags: formatting links
+img: /assets/img/simon_hochstrasser_profil.jpeg
+category: Research Associates
+permalink: /people/simon-hochstrasser/
+---
