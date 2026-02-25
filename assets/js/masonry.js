@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  // Init Masonry
-  var $grid = $('.grid').masonry({
+  // Init Masonry — skip the people page
+  var $grid = $('.grid').not('.people .grid').masonry({
     gutter: 10,
     horizontalOrder: true,
     itemSelector: '.grid-item',
