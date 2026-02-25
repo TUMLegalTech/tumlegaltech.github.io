@@ -11,6 +11,6 @@ permalink: /people/runsheng-chen/
 room: 5612.01.035
 research_interests:
   - Legal NLP
-  - Court Decision Prediction
-  - Natural Language Processing
+  - Mechanistic Interpretability of LLMs
+  - Multi-Agent Systems
 ---

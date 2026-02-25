@@ -11,6 +11,6 @@ permalink: /people/julius-vernie/
 room: 5612.01.035
 research_interests:
   - Legal NLP
-  - Natural Language Processing
-  - Legal AI
+  - Computational Models of Legislations
+  - Patent Analytics
 ---

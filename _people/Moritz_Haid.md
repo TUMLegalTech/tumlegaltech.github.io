@@ -9,5 +9,5 @@ importance: 5
 permalink: /people/moritz-haid/
 research_interests:
   - Legal Tech
-  - Data Science
+  - Data Security
 ---

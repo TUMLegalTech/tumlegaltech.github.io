@@ -9,7 +9,6 @@ category: Research Associates
 importance: 9
 permalink: /people/simon-hochstrasser/
 research_interests:
-  - Legal NLP
-  - Legal AI
-  - Natural Language Processing
+  - Tax Law Digitization
+  - AI-Supported Legislative Drafting
 ---

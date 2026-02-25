@@ -11,10 +11,9 @@ email: shanshan.xu[at]tum.de
 homepage: https://sxu.notion.site/
 room: 5612.01.035
 research_interests:
+  - Human-centered AI
   - Legal NLP
-  - Computational Social Science
-  - Computational Linguistics
-  - Long Document Comprehension
+  - AI Alignment to Pluralistic Human Values
 ---
 Shanshan is a doctoral candidate in the Legal Tech Group at TU Munich under the guidance of Matthias Grabmair. Affiliated with MaiNLP at LMU, she benefits from the mentorship of Barbara Plank. With prior experience as a speech scientist at Nuance Communications/Cerence, Shanshan completed her master's degree in Cultural and Cognitive Linguistics at LMU Munich. Her research interests encompass Natural Language Processing (NLP) in LegalTech, Computational Social Science, and Computational Linguistics.
 

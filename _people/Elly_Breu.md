@@ -10,5 +10,5 @@ importance: 3
 permalink: /people/elly-breu/
 research_interests:
   - Legal Tech
-  - Law and Technology
+  - Access to Justice
 ---

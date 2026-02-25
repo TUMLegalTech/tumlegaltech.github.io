@@ -31,6 +31,15 @@
   object-fit: contain;
 }
 
+.supporter.supporter-compact{
+  padding: 4px 6px;
+}
+
+.supporter.supporter-compact img{
+  max-height: 120px;
+  max-width: 100%;
+}
+
 /* Project images: keep big photos from becoming huge */
 .project-hero img{
   max-width: 900px;   /* pick 750–1000px to taste */

@@ -10,7 +10,6 @@ importance: 1
 permalink: /people/julia-schaumeier/
 room: 5612.01.035
 research_interests:
-  - Legal NLP
-  - Legal Information Retrieval
-  - Computational Law
+  - Artificial Intelligence
+  - Multi-agent Systems
 ---

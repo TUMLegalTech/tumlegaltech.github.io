@@ -5,7 +5,7 @@ description: "Bachelor and master thesis opportunities at TUM Legal Tech Group i
 keywords: "legal tech thesis, TUM bachelor thesis, master thesis legal NLP, legal AI thesis topics"
 permalink: /thesis_mentoring/
 nav: true
-nav_order: 5
+nav_order: 6
 ---
 If you are interested in doing your bachelor or master thesis in the domain of legal data analytics, natural language processing of legal text, or law-focused knowledge representation and reasoning, please send email to Prof. Grabmair with the following:
 - a current CV

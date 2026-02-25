@@ -5,6 +5,6 @@ description: "Open research and student positions at the TUM Legal Tech Group in
 keywords: "legal tech positions, research assistant legal NLP, PhD legal AI, TUM research jobs"
 permalink: /open_positions/
 nav: true
-nav_order: 5
+nav_order: 6
 ---
 Currently there are no open positions.

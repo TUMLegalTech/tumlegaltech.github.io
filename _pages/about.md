@@ -3,7 +3,7 @@ layout: about
 title: about
 permalink: /
 description: "TUM Legal Tech Group: AI, NLP, and machine learning research applied to law, judicial decision support, and legal text processing at the Technical University of Munich."
-keywords: "legal tech, legal NLP, AI and law, computational legal reasoning, TUM, Matthias Grabmair, court decision prediction, digital-ready legislation"
+keywords: "legal tech, legal NLP, AI and law, computational legal reasoning, TUM, Matthias Grabmair, legal advocacy, court decision prediction, digital-ready legislation, legal benchmarking"
 
 profile:
   align: right

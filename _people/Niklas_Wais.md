@@ -9,7 +9,7 @@ category: Research Associates
 importance: 5
 permalink: /people/niklas-wais/
 research_interests:
-  - Court Decision Prediction
-  - Legal Text Classification
   - Legal NLP
+  - Court Decision Prediction
+  - Legal Theory & History
 ---

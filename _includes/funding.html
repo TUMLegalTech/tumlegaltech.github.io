@@ -1,6 +1,6 @@
 <div class="supporters">
   {% for s in site.data.supporters %}
-    <a class="supporter" href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.name }}">
+    <a class="supporter{% if s.compact %} supporter-compact{% endif %}" href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.name }}">
       <img src="{{ s.logo | relative_url }}" alt="{{ s.name }}">
     </a>
   {% endfor %}

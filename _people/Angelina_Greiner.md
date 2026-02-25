@@ -10,5 +10,5 @@ importance: 4
 permalink: /people/angelina-greiner/
 research_interests:
   - Legal Tech
-  - Law and Technology
+  - Access to Justice
 ---

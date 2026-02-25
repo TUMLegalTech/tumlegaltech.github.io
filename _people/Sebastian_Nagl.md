@@ -9,8 +9,8 @@ category: Research Associates
 importance: 4
 permalink: /people/sebastian-nagl/
 research_interests:
-  - Empirical Legal Research
-  - Evaluation of Free Form Legal Work
+  - Legal NLP
+  - LLM Benchmarking
   - Data Synthesis for Law
 ---
 

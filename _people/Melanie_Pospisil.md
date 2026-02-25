@@ -11,5 +11,4 @@ permalink: /people/melanie-pospisil/
 research_interests:
   - Legal Tech
   - Mathematics
-  - Data Analysis
 ---
