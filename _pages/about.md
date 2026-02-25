@@ -24,6 +24,8 @@ Our work spans:
 - **Digital-ready legislation** — AI-supported legislative drafting and compliance automation
 - **Legal benchmarking** — building evaluation frameworks to rigorously assess AI performance on legal tasks
 
-We collaborate closely with federal and state ministries, courts, legal scholars, and legal practitioners to ensure our research translates into practice.
-
-Explore our [research projects](/projects/) to see what we are working on, or browse our [publications](/publications/) for the full list of papers. If you are interested in joining the group, check our [open positions](/open_positions/) or learn about [thesis mentoring](/thesis_mentoring/) for Bachelor's and Master's students. You can also meet the [team](/people/) or find out more about our [teaching](/teaching/) activities.
+We collaborate closely with federal and state ministries, courts, legal scholars, and legal practitioners to ensure our research translates into practice. Current projects include:
+- [**Digital-Ready Tax Law**](/projects/1_project/) — AI-supported legislative drafting for German tax law
+- [**Generative Language Model for the Judiciary (GSJ)**](/projects/2_project/) — developing generative AI to support judicial decision making
+- [**TITAN**](/projects/3_project/) — interdisciplinary research on robust AI deployment in the German justice system
+- [**BenGER**](/projects/4_project/) — a holistic benchmark and platform for evaluating LLM-based systems in German law
