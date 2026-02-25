@@ -3,7 +3,7 @@ layout: profiles
 title: Ada
 name: Ada
 description: Canine Research Fellow
-img: /assets/img/ada.jpg
+img: /assets/img/ada.jpeg
 category: Canine Research Fellow
 permalink: /people/ada
 research_interests:
