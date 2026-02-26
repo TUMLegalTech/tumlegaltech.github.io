@@ -20,11 +20,15 @@ layout: page
         <a href="{{ profile.permalink }}">
           <div class="card">
             {% assign photo = profile.picture | default: profile.img -%}
+            {% assign card_photo_class = 'card-photo' %}
+            {% if profile.card_photo_class %}
+            {% assign card_photo_class = card_photo_class | append: ' ' | append: profile.card_photo_class %}
+            {% endif %}
             {% if photo -%}
             {% assign photo_path = photo | remove_first: "/assets/img/" | prepend: "/assets/img/" -%}
-            <img class="card-photo" src="{{ photo_path }}" alt="Portrait ({{profile.name}})">
+            <img class="{{ card_photo_class }}" src="{{ photo_path }}" alt="Portrait ({{profile.name}})">
             {%- else -%}
-            <img class="card-photo" src="/assets/img/people-default.jpg" alt="Portrait ({{profile.name}})">
+            <img class="{{ card_photo_class }}" src="/assets/img/people-default.jpg" alt="Portrait ({{profile.name}})">
             {%- endif -%}
             <div class="card-body">
               <h2 class="card-title">{{profile.name}}</h2>

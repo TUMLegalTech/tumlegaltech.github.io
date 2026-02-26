@@ -9,13 +9,19 @@
         <div class="card">
           <div class="card-img">
             {%- if person.img %}
+            {%- assign card_photo_class = "card-photo" -%}
+            {%- if person.card_photo_class %}
+            {%- assign card_photo_class = card_photo_class | append: " " | append: person.card_photo_class -%}
+            {%- endif %}
             {%- include figure.html
             path=person.img
+            class=card_photo_class
             sizes = "250px"
             alt="person thumbnail" -%}
             {%- else %}
             {%- include figure.html
             path="/assets/img/people-default.jpg"
+            class="card-photo"
             sizes = "250px"
             alt="person thumbnail" -%}
             {%- endif %}

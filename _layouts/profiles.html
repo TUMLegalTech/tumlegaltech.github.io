@@ -19,9 +19,13 @@ layout: default
     </div>
     <div class="ms-4" style="max-width: 230px; flex-shrink: 0;">
       {% assign photo = page.picture | default: page.img -%}
+      {% assign profile_photo_class = "profile-photo mr-5" %}
+      {% if page.profile_photo_class %}
+      {% assign profile_photo_class = profile_photo_class | append: " " | append: page.profile_photo_class %}
+      {% endif %}
       {% if photo -%}
       {% assign photo_path = photo | remove_first: "/assets/img/" | prepend: "/assets/img/" -%}
-      <img class="profile-photo mr-5" src="{{ photo_path }}" alt="Portrait ({{page.name}})">
+      <img class="{{ profile_photo_class }}" src="{{ photo_path }}" alt="Portrait ({{page.name}})">
       {%- else -%}
       <img class="profile-photo" src="/assets/img/people-default.jpg" alt="Portrait ({{page.name}})">
       {%- endif -%}
