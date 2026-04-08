@@ -13,3 +13,9 @@ If you are interested in doing your bachelor or master thesis in the domain of l
 - a brief paragraph description of your motivation to work in the area
 
 Additional resources for students interested in Legal Tech and AI&Law will be added to this website shortly.
+
+## Open Topics
+
+*Please note: some topic descriptions are in German.* 🇩🇪
+
+- [Agentische Systeme in der staatlichen Finanzkontrolle (Masterarbeit Informatik)](/thesis_mentoring/orh-agentic-systems/) 🇩🇪
