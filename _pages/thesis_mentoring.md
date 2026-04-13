@@ -19,3 +19,4 @@ Additional resources for students interested in Legal Tech and AI&Law will be ad
 *Please note: some topic descriptions are in German.* 🇩🇪
 
 - [Agentische Systeme in der staatlichen Finanzkontrolle (Masterarbeit Informatik)](/thesis_mentoring/orh-agentic-systems/) 🇩🇪
+- [Synthese von Trainings- und Benchmarkdaten aus juristischen Fallakten (Masterarbeit Informatik)](/thesis_mentoring/legal-nlp-data-synthesis/) 🇩🇪
