@@ -65,8 +65,6 @@ Assuming you have [Ruby](https://www.ruby-lang.org/en/downloads/) and [Bundler](
 
 ```bash
 $ bundle install
-# assuming pip is your Python package manager
-$ pip install jupyter
 $ bundle exec jekyll serve --lsi
 ```
 
