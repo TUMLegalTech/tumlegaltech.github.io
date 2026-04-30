@@ -67,8 +67,11 @@ jobs:
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           printf '%s\n' "$DEPLOY_KEY"   > ~/.ssh/deploy_key   && chmod 600 ~/.ssh/deploy_key
           printf '%s\n' "$KNOWN_HOSTS"  > ~/.ssh/known_hosts  && chmod 600 ~/.ssh/known_hosts
+          # The tumlegaltech account's authorized_keys forces rrsync into
+          # /srv/tumlegaltech/_site, so the destination path is the chroot
+          # root (`:/`), not the absolute path.
           rsync -az --delete \
             -e "ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts" \
             _site/ \
-            tumlegaltech@ltvm5.cit.tum.de:/srv/tumlegaltech/_site/
+            tumlegaltech@ltvm5.cit.tum.de:/
 

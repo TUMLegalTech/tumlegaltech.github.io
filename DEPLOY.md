@@ -93,7 +93,9 @@ The `tumlegaltech` user only needs to receive rsync into `/srv/tumlegaltech/_sit
 restrict,command="rrsync /srv/tumlegaltech/_site" ssh-ed25519 AAAA... github-actions deploy
 ```
 
-`rrsync` (`/usr/share/doc/rsync/scripts/rrsync.gz` on Ubuntu) constrains the SSH session to rsync into the given path. Even if the deploy key is exfiltrated, the attacker can only replace `/srv/tumlegaltech/_site/` — not modify the Caddyfile, install software, or run other commands.
+`rrsync` (Ubuntu ships it at `/usr/bin/rrsync`) constrains the SSH session to rsync into the given path. Even if the deploy key is exfiltrated, the attacker can only replace `/srv/tumlegaltech/_site/` — not modify the Caddyfile, install software, or run other commands.
+
+**Path mapping note:** because `rrsync -wo /srv/tumlegaltech/_site` chroots into that directory, the workflow's rsync destination is `tumlegaltech@host:/` (the chroot root), not the full host path. Specifying the absolute path on the client would land at `/srv/tumlegaltech/_site/srv/tumlegaltech/_site/` and fail.
 
 ## TLS certificate
 
@@ -133,6 +135,20 @@ sudo useradd --system --create-home --home-dir /var/lib/tumlegaltech \
 # repo target dir
 sudo install -d -o tumlegaltech -g ltvm5-admin -m 2775 /srv/tumlegaltech
 sudo install -d -o tumlegaltech -g ltvm5-admin -m 2775 /srv/tumlegaltech/_site
+
+# .ssh dir for deploy user
+sudo install -d -o tumlegaltech -g tumlegaltech -m 0700 /var/lib/tumlegaltech/.ssh
+sudo install -o tumlegaltech -g tumlegaltech -m 0600 \
+     /dev/null /var/lib/tumlegaltech/.ssh/authorized_keys
+# (then append the rrsync-restricted public key — see "Hardening the deploy account")
+
+# allow tumlegaltech in pam_access (CIT VMs deny non-LDAP users by default)
+sudo sed -i.bak '/^-:ALL:ALL/i +:tumlegaltech:ALL' /etc/security/access.conf
+
+# suppress the dynamic Ubuntu MOTD on SSH sessions — it pollutes rsync's stdout
+# stream and breaks the protocol handshake (".hushlogin" is not honored under
+# Ubuntu 24.04's pam_motd configuration).
+sudo sed -i.bak 's|^session\s*optional\s*pam_motd|# &|' /etc/pam.d/sshd
 
 # place Caddyfile + compose.prod.yaml (one-off; rare changes)
 # (copy from this repo or from the corresponding git ref)
