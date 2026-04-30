@@ -52,3 +52,23 @@ jobs:
           branch: gh-pages   # 👈 make it explicit
           folder: _site
 
+      # Ship the same _site/ artifact to LT-HP, where Caddy serves it.
+      # See DEPLOY.md for the SSH key and known-hosts secret setup.
+      - name: Deploy to LT-HP 🚛
+        if: github.event_name != 'pull_request'
+        env:
+          DEPLOY_KEY: ${{ secrets.LT_HP_DEPLOY_KEY }}
+          KNOWN_HOSTS: ${{ secrets.LT_HP_KNOWN_HOSTS }}
+        run: |
+          if [ -z "$DEPLOY_KEY" ] || [ -z "$KNOWN_HOSTS" ]; then
+            echo "::warning::LT_HP_DEPLOY_KEY or LT_HP_KNOWN_HOSTS secret not set; skipping VM deploy"
+            exit 0
+          fi
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY"   > ~/.ssh/deploy_key   && chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS"  > ~/.ssh/known_hosts  && chmod 600 ~/.ssh/known_hosts
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts" \
+            _site/ \
+            tumlegaltech@ltvm5.cit.tum.de:/srv/tumlegaltech/_site/
+

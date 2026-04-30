@@ -242,6 +242,7 @@ exclude:
   - FAQ.md
   - INSTALL.md
   - CLAUDE.md
+  - DEPLOY.md
   # deployment / containerization — not part of the published site
   - Dockerfile
   - docker-compose.yml

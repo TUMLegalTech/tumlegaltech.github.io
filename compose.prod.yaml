@@ -1,28 +1,14 @@
-# Production compose for self-hosting on LT-HP.
+# Production compose for LT-HP. Caddy is the only service: it serves the
+# static _site/ directory that GitHub Actions rsyncs in on every push to main.
 #
-# Two services:
-#   builder — one-shot, builds the static site into _site/ and exits.
-#   caddy   — long-running, serves _site/ on :80/:443 with auto Let's Encrypt.
+# This file lives both in the repo (versioned) and at /srv/tumlegaltech/ on
+# the VM. Bring up / restart with:
+#   docker compose -f compose.prod.yaml up -d caddy
 #
-# Deploy / refresh content:
-#   git pull
-#   docker compose -f compose.prod.yaml run --rm builder
-#   docker compose -f compose.prod.yaml up -d caddy   # only first time / on Caddyfile change
-#
-# Caddy reads files live from the _site/ bind mount, so a fresh build is
-# served without restarting Caddy.
+# Routine content updates do not touch this file — CI rsyncs into _site/
+# and Caddy serves the new content immediately (no restart needed).
 
 services:
-  builder:
-    build: .
-    image: tumlegaltech-jekyll:latest
-    command: bash -c "rm -f Gemfile.lock && bundle exec jekyll build --lsi"
-    environment:
-      JEKYLL_ENV: production
-    volumes:
-      - .:/srv/jekyll
-    restart: "no"
-
   caddy:
     image: caddy:2
     restart: unless-stopped
