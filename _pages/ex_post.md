@@ -3,7 +3,7 @@ layout: page
 title: ex-post-veröffentlichungen
 permalink: /ex-post-veroeffentlichungen/
 nav: true
-nav_order: 7
+nav_order: 8
 description: "Ex-post procurement transparency notices for the TUM Legal Tech Group as required by UVgO/VGV."
 keywords: "ex-post transparency, procurement notice, TUM Legal Tech"
 ---
