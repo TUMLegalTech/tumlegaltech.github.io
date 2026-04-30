@@ -251,6 +251,7 @@ exclude:
   - deploy
   - .dockerignore
   - .pre-commit-config.yaml
+  - purgecss.config.js
 keep_files:
   - CNAME
   - .nojekyll
