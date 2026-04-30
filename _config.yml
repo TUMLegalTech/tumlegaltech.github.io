@@ -299,8 +299,63 @@ display_categories: ['blockquotes'] # these categories will be displayed on the 
 
 scholar:
 
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  # Underline these names in publication lists. Keep in sync with _people/
+  # when researchers join/leave. Cross-product matches (last,first) pairs.
+  last_name:
+    - Grabmair
+    - Schultz
+    - Schaumeier
+    - Prior
+    - Nagl
+    - Wais
+    - Elganayni
+    - Chen
+    - Vernie
+    - Hochstraßer
+    - Hochstrasser
+    - Haddad
+    - Pospisil
+    - Breu
+    - Greiner
+    - Haid
+    - Pelikan
+    - Milijas
+    - Ichim
+    - Xu
+    - Santosh
+  first_name:
+    - Matthias
+    - M.
+    - Andreas
+    - A.
+    - Julia
+    - J.
+    - Max
+    - Sebastian
+    - S.
+    - Niklas
+    - N.
+    - Mohamed
+    - M. H.
+    - Runsheng
+    - R.
+    - Julius
+    - Simon
+    - Rashid
+    - Melanie
+    - Elly
+    - E.
+    - Angelina
+    - Moritz
+    - Quirin
+    - Q.
+    - Sofija
+    - Oana
+    - O.
+    - Shanshan
+    - Tokala
+    - T.
+    - T. Y. S. S.
 
   style: apa
   locale: en
