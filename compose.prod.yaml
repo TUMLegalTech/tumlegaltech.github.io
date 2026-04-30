@@ -32,6 +32,11 @@ services:
     volumes:
       - ./_site:/srv/site:ro
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      # bin/cert-renew-hook (installed at /usr/local/cert.d/) copies the
+      # rbg-cert-issued fullchain.pem + privkey.pem into /etc/caddy/tls/
+      # whenever the cert renews, so this directory is the authoritative
+      # source for the running Caddy process.
+      - /etc/caddy/tls:/etc/caddy/tls:ro
       - caddy-data:/data
       - caddy-config:/config
 

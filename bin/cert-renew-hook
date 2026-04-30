@@ -1,0 +1,35 @@
+#!/bin/bash
+# rbg-cert hook: install the renewed TLS certificate where Caddy can read it,
+# then ask Caddy to reload.
+#
+# Install on LT-HP with:
+#   sudo install -m 0755 /srv/tumlegaltech/bin/cert-renew-hook \
+#     /usr/local/cert.d/50-tumlegaltech-caddy
+#
+# rbg-cert calls every executable under /usr/local/cert.d/ via run-parts(8)
+# after a successful certificate refresh. The first argument ($1) is the
+# subpath prefix of the freshly installed cert files — append .fullchain.pem
+# / .privkey.pem / .chain.pem / .cert.pem to read the individual files.
+#
+# Pattern follows the Apache/nginx examples in the TUM CIT wiki:
+# https://wiki.ito.cit.tum.de/bin/view/CIT/ITO/Docs/Services/Certificates/Server%20Certificate/
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+CERT_PATH="$1"
+DEST=/etc/caddy/tls
+COMPOSE_FILE=/srv/tumlegaltech/compose.prod.yaml
+
+install -d -m 0755 "$DEST"
+install -m 0644 "$CERT_PATH".fullchain.pem "$DEST"/fullchain.pem
+install -m 0600 "$CERT_PATH".privkey.pem   "$DEST"/privkey.pem
+
+# Reload Caddy if it is running. Skip silently if Docker is unavailable
+# (e.g., the hook runs while Docker is being upgraded).
+if command -v docker >/dev/null 2>&1 \
+	&& docker compose -f "$COMPOSE_FILE" ps --status running --quiet caddy 2>/dev/null | grep -q .; then
+	docker compose -f "$COMPOSE_FILE" exec -T caddy \
+		caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile
+fi

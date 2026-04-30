@@ -1,10 +1,20 @@
 # Caddy config for LT-HP production hosting.
 #
-# Both names are listed so Caddy auto-provisions a Let's Encrypt cert for each
-# as soon as the DNS resolves to LT-HP (131.159.30.175). Until the friendlier
-# legaltech.cit.tum.de record exists, only ltvm5.cit.tum.de will be issued.
+# TLS certificate is issued and renewed automatically by rbg-cert (TUM CIT)
+# from /var/lib/rbg-cert/live/. compose.prod.yaml bindmounts that directory
+# read-only into the container at /etc/caddy/tls/.
+#
+# A renewal hook in /usr/local/cert.d/ reloads Caddy after rbg-cert refreshes
+# the certificate, so no restart is required during normal operation.
 
-ltvm5.cit.tum.de, legaltech.cit.tum.de {
+{
+	# Disable Caddy's automatic ACME flow — rbg-cert provides the cert.
+	auto_https disable_certs
+}
+
+ltvm5.cit.tum.de {
+	tls /etc/caddy/tls/fullchain.pem /etc/caddy/tls/privkey.pem
+
 	root * /srv/site
 	encode gzip zstd
 	file_server
