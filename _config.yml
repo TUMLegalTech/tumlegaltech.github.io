@@ -235,6 +235,20 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  # al-folio template documentation — not part of the published site
+  - README.md
+  - CONTRIBUTING.md
+  - CUSTOMIZE.md
+  - FAQ.md
+  - INSTALL.md
+  - CLAUDE.md
+  # deployment / containerization — not part of the published site
+  - Dockerfile
+  - docker-compose.yml
+  - compose.prod.yaml
+  - Caddyfile
+  - .dockerignore
+  - .pre-commit-config.yaml
 keep_files:
   - CNAME
   - .nojekyll
