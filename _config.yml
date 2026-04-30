@@ -10,8 +10,7 @@ email: # TODO: add group contact email
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   The official webpage of the TUM Legal Tech research group.
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with the <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
 
 keywords: legal tech, legal NLP, natural language processing, AI and law, legal advocacy, court decision prediction, digital-ready legislation, legal benchmarking, computational legal reasoning, legal text mining, TUM, Technical University of Munich
 
@@ -131,8 +130,8 @@ profile:
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: TUM Legal Tech blog
+blog_description: writing from the TUM Legal Tech Group
 permalink: /blog/:year/:title/
 
 # Pagination
@@ -159,15 +158,12 @@ giscus:
   lang: en
 
 # Disqus comments (DEPRECATED)
-disqus_shortname: al-folio # put your disqus shortname
-# https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+disqus_shortname:  # disqus is unused; giscus is the active comment system. https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 # External sources.
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
 
 # -----------------------------------------------------------------------------
 # Collections
