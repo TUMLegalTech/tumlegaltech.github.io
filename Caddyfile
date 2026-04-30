@@ -1,18 +1,25 @@
 # Caddy config for LT-HP production hosting.
 #
-# TLS certificate is issued and renewed automatically by rbg-cert (TUM CIT)
-# from /var/lib/rbg-cert/live/. compose.prod.yaml bindmounts that directory
-# read-only into the container at /etc/caddy/tls/.
+# TLS certificate is issued and renewed by rbg-cert (TUM CIT) and copied into
+# /etc/caddy/tls/{fullchain,privkey}.pem by /usr/local/cert.d/50-tumlegaltech-caddy
+# whenever rbg-cert renews. Caddy reads from /etc/caddy/tls/ via a read-only
+# bindmount; see compose.prod.yaml.
 #
-# A renewal hook in /usr/local/cert.d/ reloads Caddy after rbg-cert refreshes
-# the certificate, so no restart is required during normal operation.
-
+# Hostname migration plan: lt.cit.tum.de → primary; ltvm5.cit.tum.de → retired.
+# To complete the migration, in this order:
+#   1. Add lt.cit.tum.de to StrukturDB so rbg-cert puts it in the cert SAN
+#      (run `sudo rbg-cert --force-request` after the change to refresh).
+#   2. Add an A/AAAA record for lt.cit.tum.de → 131.159.30.175 / 2a09:80c0:30::175.
+#   3. After steps 1+2 are live, drop `ltvm5.cit.tum.de` from the site block
+#      below (and request StrukturDB to drop it too if no longer needed).
 {
 	# Disable Caddy's automatic ACME flow — rbg-cert provides the cert.
 	auto_https disable_certs
 }
 
-ltvm5.cit.tum.de {
+# Both names are accepted; the same cert covers both once the SAN is added.
+# Until then, lt.cit.tum.de is dormant (DNS doesn't resolve to this VM yet).
+ltvm5.cit.tum.de, lt.cit.tum.de {
 	tls /etc/caddy/tls/fullchain.pem /etc/caddy/tls/privkey.pem
 
 	root * /srv/site
