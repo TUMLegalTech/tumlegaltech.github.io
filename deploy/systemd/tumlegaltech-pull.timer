@@ -1,0 +1,12 @@
+[Unit]
+Description=Poll the `production` branch every 2 minutes for new website builds
+Documentation=https://github.com/TUMLegalTech/tumlegaltech.github.io/blob/main/DEPLOY.md
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+AccuracySec=30s
+Unit=tumlegaltech-pull.service
+
+[Install]
+WantedBy=timers.target

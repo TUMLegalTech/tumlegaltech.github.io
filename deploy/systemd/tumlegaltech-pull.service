@@ -1,0 +1,20 @@
+[Unit]
+Description=Pull TUM Legal Tech website from the `production` branch
+Documentation=https://github.com/TUMLegalTech/tumlegaltech.github.io/blob/main/DEPLOY.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=tumlegaltech
+Group=tumlegaltech
+ExecStart=/usr/local/bin/pull-from-production
+Nice=10
+
+# Hardening — the script only needs to read /var/lib/tumlegaltech and
+# write into /srv/tumlegaltech/_site.
+ProtectSystem=strict
+ReadWritePaths=/var/lib/tumlegaltech /srv/tumlegaltech/_site
+ProtectHome=true
+PrivateTmp=true
+NoNewPrivileges=true

@@ -1,101 +1,91 @@
 # Production deployment
 
-The TUM Legal Tech website is hosted on the CIT VM **`ltvm5.cit.tum.de`** (alias `LT-HP`). GitHub Pages also publishes the same site at <https://tum-legal-tech.github.io> as a fallback.
+The TUM Legal Tech website is hosted on the CIT VM **`ltvm5.cit.tum.de`** (alias `LT-HP`; planned hostname `lt.cit.tum.de`). GitHub Pages also publishes the same site at <https://tum-legal-tech.github.io> as a fallback during the VM-soak period.
 
 ## Architecture
 
 ```
-┌──────────────────┐    push to main    ┌──────────────────────────────┐
-│ GitHub repo      ├───────────────────►│ GitHub Actions               │
-│ TUMLegalTech/... │                    │ .github/workflows/deploy.yml │
-└──────────────────┘                    └──────┬──────────────┬────────┘
-                                               │              │
-                              build + purgecss │              │
-                                               │              │
-                                       ┌───────▼───────┐ ┌────▼────────────────┐
-                                       │ gh-pages      │ │ rsync over SSH      │
-                                       │ branch        │ │ (LT_HP_DEPLOY_KEY)  │
-                                       └───────┬───────┘ └────┬────────────────┘
-                                               │              │
-                                  ┌────────────▼─────┐   ┌────▼────────────────┐
-                                  │ tum-legal-tech   │   │ ltvm5.cit.tum.de    │
-                                  │ .github.io       │   │ /srv/tumlegaltech/  │
-                                  │ (fallback)       │   │   _site/   ◄── rsync│
-                                  │                  │   │   Caddyfile         │
-                                  │                  │   │   compose.prod.yaml │
-                                  │                  │   │ Caddy + rbg-cert    │
-                                  └──────────────────┘   └─────────────────────┘
+┌─────────────────────┐                          ┌──────────────────────────────┐
+│ GitHub repo         │  push to main           │ GitHub Actions               │
+│ TUMLegalTech/...    ├──────────────────────►  │ .github/workflows/deploy.yml │
+└─────────────────────┘                          └──────┬──────────────┬────────┘
+                                                        │              │
+                                       build + purgecss │              │
+                                                        │              │
+                                            ┌───────────▼──────┐ ┌─────▼────────────┐
+                                            │ branch:          │ │ branch:          │
+                                            │ production       │ │ gh-pages         │
+                                            │ (canonical)      │ │ (fallback only)  │
+                                            └───────┬──────────┘ └─────┬────────────┘
+                                                    │                  │
+                              git fetch every 2 min │                  │ GitHub Pages
+                                                    │                  │
+                                            ┌───────▼─────────────┐  ┌─▼────────────────┐
+                                            │ ltvm5.cit.tum.de    │  │ tum-legal-tech   │
+                                            │ /srv/tumlegaltech/  │  │ .github.io       │
+                                            │   _site/   ◄── pull │  │ (fallback)       │
+                                            │   Caddyfile         │  │                  │
+                                            │   compose.prod.yaml │  │                  │
+                                            │ Caddy + rbg-cert    │  │                  │
+                                            └─────────────────────┘  └──────────────────┘
 ```
 
-The VM has **no source code, no `.git`, no Ruby, no Jekyll** — only the rendered `_site/`. CI does all the building.
+The VM has **no inbound network dependency** beyond ports 80/443 — no SSH from the public internet, no GitHub Actions secrets to manage. The deploy direction is pull, not push: a systemd timer on the VM polls the `production` branch every 2 minutes and rsyncs the new content into the directory Caddy serves.
+
+The `production` branch is the canonical artifact. The `gh-pages` branch is published in parallel as a fallback at `tum-legal-tech.github.io`; once the VM has been stable for a release cycle, drop the `Publish to gh-pages branch (fallback)` step from `.github/workflows/deploy.yml` to fully decouple from GitHub Pages.
 
 ## What's on the VM
 
 | Path | Purpose |
 | --- | --- |
-| `/srv/tumlegaltech/_site/` | Rendered site, replaced on every CI deploy via rsync |
+| `/srv/tumlegaltech/_site/` | Rendered site, replaced on every pull |
 | `/srv/tumlegaltech/Caddyfile` | Caddy config, kept in sync with the repo |
 | `/srv/tumlegaltech/compose.prod.yaml` | Compose file defining the Caddy service |
+| `/var/lib/tumlegaltech/build/` | Shallow clone of the `production` branch |
+| `/var/lib/tumlegaltech/pull.lock` | flock guard for the pull script |
+| `/usr/local/bin/pull-from-production` | Pull script (sourced from `bin/` in this repo) |
+| `/etc/systemd/system/tumlegaltech-pull.{service,timer}` | systemd units (sourced from `deploy/systemd/`) |
 | `/etc/caddy/tls/{fullchain,privkey}.pem` | TLS cert installed by the rbg-cert hook |
 | `/usr/local/cert.d/50-tumlegaltech-caddy` | Hook that copies certs and reloads Caddy |
 | Caddy container (`tumlegaltech-caddy-1`) | Long-running, serves :80/:443 |
 
 ## Deploys
 
-Every push to `main` automatically:
-1. CI builds the site (`bundle exec jekyll build --lsi` + `purgecss`).
-2. The build is published to the `gh-pages` branch (so GitHub Pages refreshes).
-3. The same `_site/` is rsynced (with `--delete`) to `/srv/tumlegaltech/_site/` on LT-HP.
-4. Caddy serves the new content immediately — it reads files live from the bindmount, no reload required.
+Every push to `main`:
 
-To deploy a fix manually outside of a push, run the **deploy** workflow from <https://github.com/TUMLegalTech/tumlegaltech.github.io/actions> via "Run workflow" (the workflow accepts `workflow_dispatch`).
+1. CI builds the site (`bundle exec jekyll build --lsi` + `purgecss`).
+2. CI publishes the build to the `production` branch (and to `gh-pages` while the fallback is active).
+3. Within ~2 minutes, the VM's `tumlegaltech-pull.timer` fires.
+4. The pull script `git fetch`es `production`. If unchanged, exits in milliseconds. If changed, `git reset --hard` and `rsync --delete` into `/srv/tumlegaltech/_site/`.
+5. Caddy serves the new content immediately — it reads files live from the bindmount, no reload needed.
+
+To check the status from the VM:
+
+```bash
+systemctl status tumlegaltech-pull.timer
+journalctl -u tumlegaltech-pull.service -n 20
+```
+
+To force a deploy without waiting for the timer:
+
+```bash
+sudo systemctl start tumlegaltech-pull.service
+```
 
 ## Rollback
 
-The `_site/` artifact is uploaded as a workflow artifact and retained for 7 days. To roll back:
+Each push to `production` is a commit on that branch — the history is your rollback ladder.
 
-1. Find the last good run in the Actions tab.
-2. Re-run that workflow (keeps its old commit context).
-
-Alternatively, `git revert <bad-commit>` on `main` produces a fresh CI run with the rolled-back content.
-
-## Required GitHub Actions secrets
-
-The deploy step reads two secrets. Set them in `Settings → Secrets and variables → Actions` on the repo:
-
-| Secret | Contents |
-| --- | --- |
-| `LT_HP_DEPLOY_KEY` | Private SSH key authorized for the `tumlegaltech` user on the VM |
-| `LT_HP_KNOWN_HOSTS` | One-line `ssh-keyscan -H ltvm5.cit.tum.de` output (host key pin) |
-
-If either is missing, the workflow logs a warning and skips the VM deploy (the GH Pages step still runs).
-
-### Generating / rotating the deploy key
-
-On any machine with `ssh-keygen`:
+To roll back to a previous build:
 
 ```bash
-ssh-keygen -t ed25519 -f lt-hp-deploy -N "" -C "github-actions deploy → ltvm5.cit.tum.de"
+# pick the SHA you want from `git log origin/production`
+git push origin <good-sha>:production --force
 ```
 
-Produces `lt-hp-deploy` (private) and `lt-hp-deploy.pub` (public).
+Within 2 minutes the VM reverts. The same SHA is also tagged on `gh-pages` while the fallback is active, so GitHub Pages reverts automatically too.
 
-1. Append `lt-hp-deploy.pub` to `/var/lib/tumlegaltech/.ssh/authorized_keys` on LT-HP. Keep the SSH options restrictive — see [next section](#hardening-the-deploy-account).
-2. Paste the contents of `lt-hp-deploy` (private key, including the `-----BEGIN`/`-----END` lines) into the `LT_HP_DEPLOY_KEY` secret.
-3. Run `ssh-keyscan -H ltvm5.cit.tum.de` and paste the output (typically several lines for ed25519 / rsa / ecdsa) into `LT_HP_KNOWN_HOSTS`.
-4. Delete the `lt-hp-deploy` private key file from your local machine.
-
-### Hardening the deploy account
-
-The `tumlegaltech` user only needs to receive rsync into `/srv/tumlegaltech/_site/`. It does **not** need a shell, Docker, or any other capabilities. Recommended `authorized_keys` line:
-
-```
-restrict,command="rrsync /srv/tumlegaltech/_site" ssh-ed25519 AAAA... github-actions deploy
-```
-
-`rrsync` (Ubuntu ships it at `/usr/bin/rrsync`) constrains the SSH session to rsync into the given path. Even if the deploy key is exfiltrated, the attacker can only replace `/srv/tumlegaltech/_site/` — not modify the Caddyfile, install software, or run other commands.
-
-**Path mapping note:** because `rrsync -wo /srv/tumlegaltech/_site` chroots into that directory, the workflow's rsync destination is `tumlegaltech@host:/` (the chroot root), not the full host path. Specifying the absolute path on the client would land at `/srv/tumlegaltech/_site/srv/tumlegaltech/_site/` and fail.
+To roll back the *source* and let CI rebuild, `git revert <bad-commit>` on `main` produces a fresh CI run, which produces a new commit on `production`.
 
 ## TLS certificate
 
@@ -126,38 +116,32 @@ Recorded for posterity / future re-provisioning. None of this is required during
 ```bash
 # packages
 sudo apt update
-sudo apt install -y docker.io docker-compose-v2 rsync
+sudo apt install -y docker.io docker-compose-v2 git rsync
 
-# deploy user (no shell access beyond rsync; see "Hardening the deploy account")
+# deploy user (system user; runs the pull timer)
 sudo useradd --system --create-home --home-dir /var/lib/tumlegaltech \
-             --shell /bin/bash --comment "tumlegaltech.github.io deploy" tumlegaltech
+             --shell /usr/sbin/nologin \
+             --comment "tumlegaltech.github.io deploy" tumlegaltech
 
-# repo target dir
+# served-content directory
 sudo install -d -o tumlegaltech -g ltvm5-admin -m 2775 /srv/tumlegaltech
 sudo install -d -o tumlegaltech -g ltvm5-admin -m 2775 /srv/tumlegaltech/_site
 
-# .ssh dir for deploy user
-sudo install -d -o tumlegaltech -g tumlegaltech -m 0700 /var/lib/tumlegaltech/.ssh
-sudo install -o tumlegaltech -g tumlegaltech -m 0600 \
-     /dev/null /var/lib/tumlegaltech/.ssh/authorized_keys
-# (then append the rrsync-restricted public key — see "Hardening the deploy account")
-
-# allow tumlegaltech in pam_access (CIT VMs deny non-LDAP users by default)
-sudo sed -i.bak '/^-:ALL:ALL/i +:tumlegaltech:ALL' /etc/security/access.conf
-
-# suppress the dynamic Ubuntu MOTD on SSH sessions — it pollutes rsync's stdout
-# stream and breaks the protocol handshake (".hushlogin" is not honored under
-# Ubuntu 24.04's pam_motd configuration).
-sudo sed -i.bak 's|^session\s*optional\s*pam_motd|# &|' /etc/pam.d/sshd
-
 # place Caddyfile + compose.prod.yaml (one-off; rare changes)
-# (copy from this repo or from the corresponding git ref)
+# (copy from this repo or from a tagged commit)
 
 # rbg-cert renewal hook
 sudo install -m 0755 bin/cert-renew-hook /usr/local/cert.d/50-tumlegaltech-caddy
 
 # initial cert (idempotent; safe to re-run)
 sudo rbg-cert --force-request && sleep 60 && sudo rbg-cert
+
+# pull script + systemd timer
+sudo install -m 0755 bin/pull-from-production /usr/local/bin/pull-from-production
+sudo install -m 0644 deploy/systemd/tumlegaltech-pull.service /etc/systemd/system/
+sudo install -m 0644 deploy/systemd/tumlegaltech-pull.timer   /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now tumlegaltech-pull.timer
 
 # bring Caddy up
 cd /srv/tumlegaltech

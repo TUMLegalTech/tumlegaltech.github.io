@@ -29,14 +29,14 @@ The `--lsi` flag enables Latent Semantic Indexing for "related posts" — slow b
 
 ## Deployment
 
-`.github/workflows/deploy.yml` builds on every push to `main`/`master` and ships the same `_site/` artifact to two destinations:
+`.github/workflows/deploy.yml` builds on every push to `main`/`master` and pushes the resulting `_site/` to two branches:
 
-1. The `gh-pages` branch — published by GitHub Pages at `tum-legal-tech.github.io` (fallback).
-2. `/srv/tumlegaltech/_site/` on `ltvm5.cit.tum.de` via `rsync --delete` over SSH — served by Caddy with a TUM/DFN-issued TLS certificate (the canonical production URL).
+1. The `production` branch — the **canonical** build artifact. LT-HP polls this branch every ~2 min via `systemd` (`tumlegaltech-pull.timer` runs `bin/pull-from-production`), `git reset --hard`s, and rsyncs into `/srv/tumlegaltech/_site/`. Caddy serves over HTTPS with a TUM/DFN-issued cert.
+2. The `gh-pages` branch — published by GitHub Pages at `tum-legal-tech.github.io` as a **fallback** during the VM-soak period. To be removed from the workflow once the VM is verified stable.
 
-There is no separate staging; pushing to `main` updates both. The VM has no source code, no Ruby, no Docker build tooling — CI builds, the VM serves. See [DEPLOY.md](DEPLOY.md) for the full operational runbook (secrets, SSH key generation, cert renewal, hostname migration to `lt.cit.tum.de`).
+The VM has **no inbound network dependency** beyond ports 80/443, no source code, no Ruby, no Docker build tooling — CI builds, the VM pulls. See [DEPLOY.md](DEPLOY.md) for the full operational runbook (provisioning, cert renewal, hostname migration to `lt.cit.tum.de`, rollback).
 
-`docker-compose.yml` and `Dockerfile` exist solely for **local development** (`docker compose up`); they are not used in production. `compose.prod.yaml` and `Caddyfile` configure the running Caddy container on the VM.
+`docker-compose.yml` and `Dockerfile` exist solely for **local development** (`docker compose up`); they are not used in production. `compose.prod.yaml`, `Caddyfile`, `bin/pull-from-production`, and `deploy/systemd/*` configure the running Caddy container and pull timer on the VM.
 
 ## Content model
 

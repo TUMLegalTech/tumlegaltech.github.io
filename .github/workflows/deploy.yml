@@ -28,7 +28,6 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
 
-      # this was in your original workflow — keeps it
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@v0.13.1
         with:
@@ -45,33 +44,22 @@ jobs:
           bundle exec jekyll build --lsi
           purgecss -c purgecss.config.js
 
-      - name: Deploy 🚀
+      # Primary deploy target: the `production` branch. LT-HP polls this
+      # every ~2 min via systemd and rsyncs into /srv/tumlegaltech/_site/.
+      # See DEPLOY.md.
+      - name: Publish to production branch 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages   # 👈 make it explicit
+          branch: production
           folder: _site
 
-      # Ship the same _site/ artifact to LT-HP, where Caddy serves it.
-      # See DEPLOY.md for the SSH key and known-hosts secret setup.
-      - name: Deploy to LT-HP 🚛
+      # Fallback: keep GitHub Pages publishing tum-legal-tech.github.io
+      # while the VM-side deploy is being soaked. Drop this step once
+      # the VM has been stable for a release cycle.
+      - name: Publish to gh-pages branch (fallback) 🛟
         if: github.event_name != 'pull_request'
-        env:
-          DEPLOY_KEY: ${{ secrets.LT_HP_DEPLOY_KEY }}
-          KNOWN_HOSTS: ${{ secrets.LT_HP_KNOWN_HOSTS }}
-        run: |
-          if [ -z "$DEPLOY_KEY" ] || [ -z "$KNOWN_HOSTS" ]; then
-            echo "::warning::LT_HP_DEPLOY_KEY or LT_HP_KNOWN_HOSTS secret not set; skipping VM deploy"
-            exit 0
-          fi
-          mkdir -p ~/.ssh && chmod 700 ~/.ssh
-          printf '%s\n' "$DEPLOY_KEY"   > ~/.ssh/deploy_key   && chmod 600 ~/.ssh/deploy_key
-          printf '%s\n' "$KNOWN_HOSTS"  > ~/.ssh/known_hosts  && chmod 600 ~/.ssh/known_hosts
-          # The tumlegaltech account's authorized_keys forces rrsync into
-          # /srv/tumlegaltech/_site, so the destination path is the chroot
-          # root (`:/`), not the absolute path.
-          rsync -az --delete \
-            -e "ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts" \
-            _site/ \
-            tumlegaltech@ltvm5.cit.tum.de:/
-
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: _site

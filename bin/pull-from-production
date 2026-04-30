@@ -1,0 +1,41 @@
+#!/bin/bash
+# Pull the latest built site from the `production` branch and sync it into
+# /srv/tumlegaltech/_site/, where Caddy serves it.
+#
+# Runs unattended via tumlegaltech-pull.timer (every ~2 min). Idempotent:
+# does nothing if `production` hasn't moved since the last run.
+#
+# Install on LT-HP with the systemd units in deploy/systemd/.
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+REPO="https://github.com/TUMLegalTech/tumlegaltech.github.io.git"
+SRC="/var/lib/tumlegaltech/build"
+DEST="/srv/tumlegaltech/_site"
+LOCK="/var/lib/tumlegaltech/pull.lock"
+
+# Avoid overlapping runs (slow network, big rsync).
+exec 200>"$LOCK"
+flock -n 200 || exit 0
+
+# Initial shallow clone if missing.
+if [ ! -d "$SRC/.git" ]; then
+	mkdir -p "$(dirname "$SRC")"
+	git clone --branch production --single-branch --depth 1 "$REPO" "$SRC"
+fi
+
+git -C "$SRC" fetch --quiet --depth 1 origin production
+LOCAL=$(git -C "$SRC" rev-parse HEAD)
+REMOTE=$(git -C "$SRC" rev-parse origin/production)
+
+if [ "$LOCAL" = "$REMOTE" ]; then
+	exit 0
+fi
+
+git -C "$SRC" reset --quiet --hard origin/production
+
+# Stage into the served directory. --delete cleans up files removed in
+# the new build. .git is never copied.
+rsync -a --delete --exclude=.git "$SRC"/ "$DEST"/
