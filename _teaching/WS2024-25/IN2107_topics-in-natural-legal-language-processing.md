@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Legal Natural Language Processing Lab
-description: Master Practical Course
+title: Topics in Natural Legal Language Processing
+description: Master Seminar (IN2107)
 img: assets/img/InfoSession WiSe23_24.jpg
 importance: 1
 category: 2024/25

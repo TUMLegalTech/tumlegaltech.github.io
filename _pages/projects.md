@@ -6,7 +6,7 @@ description: "Research projects by the TUM Legal Tech Group: digital-ready legis
 keywords: "legal tech projects, Rules as Code, digital-ready law, legal AI benchmark, judicial AI, LegisLLM, BenGER, TITAN"
 nav: true
 nav_order: 4
-display_categories: [work, fun]
+display_categories: [work]
 horizontal: false
 ---
 

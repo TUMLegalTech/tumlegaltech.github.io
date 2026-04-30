@@ -6,7 +6,7 @@ description: "Courses and seminars offered by the TUM Legal Tech Group on legal 
 keywords: "legal tech courses, TUM legal technology teaching, legal NLP seminar, AI and law education"
 nav: true
 nav_order: 5
-display_categories: ["Summer 2026"]
+display_categories: ["Summer 2026", "2025", "2024/25"]
 horizontal: false
 ---
 
