@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -44,11 +44,37 @@ jobs:
           bundle exec jekyll build --lsi
           purgecss -c purgecss.config.js
 
+      - name: Test (html-proofer) 🧪
+        run: |
+          bundle exec htmlproofer _site \
+            --disable-external \
+            --allow-hash-href \
+            --ignore-urls "/^http:\/\/127\.0\.0\.1/,/^http:\/\/0\.0\.0\.0/,/^http:\/\/localhost/"
+
+      - name: Upload site artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site/
+          retention-days: 1
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site/
+
       # Primary deploy target: the `production` branch. LT-HP polls this
       # every ~2 min via systemd and rsyncs into /srv/tumlegaltech/_site/.
       # See DEPLOY.md.
       - name: Publish to production branch 🚀
-        if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: production
@@ -58,7 +84,6 @@ jobs:
       # while the VM-side deploy is being soaked. Drop this step once
       # the VM has been stable for a release cycle.
       - name: Publish to gh-pages branch (fallback) 🛟
-        if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

@@ -36,6 +36,19 @@ fi
 
 git -C "$SRC" reset --quiet --hard origin/production
 
+# Sanity-check the new build before making it live. Guards against a
+# catastrophically empty artifact slipping through (e.g. rsync wipe of DEST).
+HTML_COUNT=$(find "$SRC" -name '*.html' -not -path '*/.git/*' | wc -l)
+if [ "$HTML_COUNT" -lt 20 ]; then
+	echo "ERROR: only $HTML_COUNT HTML files in new build (expected ≥20); keeping current site live." >&2
+	exit 1
+fi
+INDEX_SIZE=$(stat -c%s "$SRC/index.html" 2>/dev/null || echo 0)
+if [ "$INDEX_SIZE" -lt 10240 ]; then
+	echo "ERROR: index.html is ${INDEX_SIZE} bytes (expected ≥10240); keeping current site live." >&2
+	exit 1
+fi
+
 # Stage into the served directory. --delete cleans up files removed in
 # the new build. .git is never copied.
 rsync -a --delete --exclude=.git "$SRC"/ "$DEST"/
