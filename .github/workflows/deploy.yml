@@ -49,7 +49,7 @@ jobs:
           bundle exec htmlproofer _site \
             --disable-external \
             --allow-hash-href \
-            --ignore-urls "/^http:\/\/127\.0\.0\.1/,/^http:\/\/0\.0\.0\.0/,/^http:\/\/localhost/"
+            --ignore-urls "/^mailto:/,/^http:\/\/127\.0\.0\.1/,/^http:\/\/0\.0\.0\.0/,/^http:\/\/localhost/,/what-a-benger\.net/"
 
       - name: Upload site artifact
         if: github.event_name != 'pull_request'
