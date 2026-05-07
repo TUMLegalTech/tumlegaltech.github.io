@@ -1,38 +1,43 @@
 # Production deployment
 
-The TUM Legal Tech website is hosted on the CIT VM **`ltvm5.cit.tum.de`** (alias `LT-HP`; planned hostname `lt.cit.tum.de`). GitHub Pages also publishes the same site at <https://tum-legal-tech.github.io> as a fallback during the VM-soak period.
+The TUM Legal Tech website is hosted on the CIT VM **`ltvm5.cit.tum.de`** (alias `LT-HP`) and served publicly at **`https://legaltech.cit.tum.de`**. GitHub Pages also publishes the same site at <https://tum-legal-tech.github.io> as a fallback during the VM-soak period.
 
 ## Architecture
 
 ```
-┌─────────────────────┐                          ┌──────────────────────────────┐
-│ GitHub repo         │  push to main           │ GitHub Actions               │
-│ TUMLegalTech/...    ├──────────────────────►  │ .github/workflows/deploy.yml │
-└─────────────────────┘                          └──────┬──────────────┬────────┘
-                                                        │              │
-                                       build + purgecss │              │
-                                                        │              │
-                                            ┌───────────▼──────┐ ┌─────▼────────────┐
-                                            │ branch:          │ │ branch:          │
-                                            │ production       │ │ gh-pages         │
-                                            │ (canonical)      │ │ (fallback only)  │
-                                            └───────┬──────────┘ └─────┬────────────┘
-                                                    │                  │
-                              git fetch every 2 min │                  │ GitHub Pages
-                                                    │                  │
-                                            ┌───────▼─────────────┐  ┌─▼────────────────┐
-                                            │ ltvm5.cit.tum.de    │  │ tum-legal-tech   │
-                                            │ /srv/tumlegaltech/  │  │ .github.io       │
-                                            │   _site/   ◄── pull │  │ (fallback)       │
-                                            │   Caddyfile         │  │                  │
-                                            │   compose.prod.yaml │  │                  │
-                                            │ Caddy + rbg-cert    │  │                  │
-                                            └─────────────────────┘  └──────────────────┘
+┌─────────────────────┐                          ┌──────────────────────────────────────────┐
+│ GitHub repo         │  push to main            │ GitHub Actions (job: build)              │
+│ TUMLegalTech/...    ├───────────────────────►  │ jekyll build --lsi + purgecss            │
+└─────────────────────┘                          │ html-proofer (internal links + HTML)     │
+                                                 └──────────────────┬───────────────────────┘
+                                                                    │ passes? upload _site/ artifact
+                                                                    │
+                                                 ┌──────────────────▼───────────────────────┐
+                                                 │ GitHub Actions (job: deploy)             │
+                                                 │ download artifact → push to branches     │
+                                                 └──────┬───────────────────────┬───────────┘
+                                                        │                       │
+                                           ┌────────────▼─────┐   ┌────────────▼─────────┐
+                                           │ branch:          │   │ branch:              │
+                                           │ production       │   │ gh-pages             │
+                                           │ (canonical)      │   │ (fallback only)      │
+                                           └────────┬─────────┘   └──────────┬───────────┘
+                                                    │                        │
+                                git fetch every 2 min                        │ GitHub Pages
+                                                    │                        │
+                                           ┌────────▼──────────────┐   ┌────▼──────────────┐
+                                           │ /srv/tumlegaltech/    │   │ tum-legal-tech    │
+                                           │   _site/  ◄── pull   │   │ .github.io        │
+                                           │   (sanity-checked)    │   │ (fallback)        │
+                                           │   Caddyfile           │   │                   │
+                                           │   compose.prod.yaml   │   │                   │
+                                           │   Caddy + rbg-cert    │   │                   │
+                                           └───────────────────────┘   └───────────────────┘
 ```
 
 The VM has **no inbound network dependency** beyond ports 80/443 — no SSH from the public internet, no GitHub Actions secrets to manage. The deploy direction is pull, not push: a systemd timer on the VM polls the `production` branch every 2 minutes and rsyncs the new content into the directory Caddy serves.
 
-The `production` branch is the canonical artifact. The `gh-pages` branch is published in parallel as a fallback at `tum-legal-tech.github.io`; once the VM has been stable for a release cycle, drop the `Publish to gh-pages branch (fallback)` step from `.github/workflows/deploy.yml` to fully decouple from GitHub Pages.
+The `production` branch is only updated when the CI build and tests pass — a broken build or a failing html-proofer run leaves `production` (and therefore the live site) unchanged. The `gh-pages` branch is published in parallel as a fallback at `tum-legal-tech.github.io`; once the VM has been stable for a release cycle, drop the `Publish to gh-pages branch (fallback)` step from `.github/workflows/deploy.yml` to fully decouple from GitHub Pages.
 
 ## What's on the VM
 
@@ -53,11 +58,12 @@ The `production` branch is the canonical artifact. The `gh-pages` branch is publ
 
 Every push to `main`:
 
-1. CI builds the site (`bundle exec jekyll build --lsi` + `purgecss`).
-2. CI publishes the build to the `production` branch (and to `gh-pages` while the fallback is active).
-3. Within ~2 minutes, the VM's `tumlegaltech-pull.timer` fires.
-4. The pull script `git fetch`es `production`. If unchanged, exits in milliseconds. If changed, `git reset --hard` and `rsync --delete` into `/srv/tumlegaltech/_site/`.
-5. Caddy serves the new content immediately — it reads files live from the bindmount, no reload needed.
+1. CI (job: **build**) builds the site (`bundle exec jekyll build --lsi` + `purgecss`).
+2. CI runs `html-proofer` against `_site/` — checks internal links, image sources, and HTML structure. If this fails, the pipeline stops here; `production` is not updated and the live site is unaffected.
+3. CI uploads `_site/` as a workflow artifact, then the **deploy** job downloads it and pushes it to the `production` branch (and to `gh-pages` while the fallback is active).
+4. Within ~2 minutes, the VM's `tumlegaltech-pull.timer` fires.
+5. The pull script `git fetch`es `production`. If unchanged, exits in milliseconds. If changed, `git reset --hard`, then runs a sanity check (≥20 HTML files, `index.html` ≥ 10 KB) before `rsync --delete` into `/srv/tumlegaltech/_site/`. If the sanity check fails, the old site stays live and the error is logged to the systemd journal.
+6. Caddy serves the new content immediately — it reads files live from the bindmount, no reload needed.
 
 To check the status from the VM:
 
@@ -101,13 +107,13 @@ sudo rbg-cert --force-request
 sudo rbg-cert            # this installs the issued cert and runs the hook
 ```
 
-## Hostname migration: `ltvm5.cit.tum.de` → `lt.cit.tum.de`
+## Hostname migration: `ltvm5.cit.tum.de` → `legaltech.cit.tum.de`
 
 The `Caddyfile` already accepts both names. To complete the cutover:
 
-1. **StrukturDB** — add `lt.cit.tum.de` to the host entry so `rbg-cert` includes it in the cert SAN. Run `sudo rbg-cert --force-request` afterwards.
-2. **DNS** — request CIT IT to add `A 131.159.30.175` and `AAAA 2a09:80c0:30::175` for `lt.cit.tum.de`.
-3. **Caddyfile** — once both are live and verified, drop `ltvm5.cit.tum.de` from the site block. Optionally keep a stub `ltvm5.cit.tum.de { redir https://lt.cit.tum.de{uri} permanent }` for one release cycle, then remove that too.
+1. **StrukturDB** — add `legaltech.cit.tum.de` to the host entry so `rbg-cert` includes it in the cert SAN. Run `sudo rbg-cert --force-request` afterwards.
+2. **DNS** — request CIT IT to add `A 131.159.30.175` and `AAAA 2a09:80c0:30::175` for `legaltech.cit.tum.de`.
+3. **Caddyfile** — once both are live and verified, drop `ltvm5.cit.tum.de` from the site block. Optionally keep a stub `ltvm5.cit.tum.de { redir https://legaltech.cit.tum.de{uri} permanent }` for one release cycle, then remove that too.
 
 ## VM provisioning (one-time)
 

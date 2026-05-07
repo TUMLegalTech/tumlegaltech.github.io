@@ -29,12 +29,7 @@ jobs:
           bundler-cache: true
 
       - name: Update _config.yml ⚙️
-        uses: fjogeleit/yaml-update-action@v0.13.1
-        with:
-          commitChange: false
-          valueFile: '_config.yml'
-          propertyPath: 'giscus.repo'
-          value: ${{ github.repository }}
+        run: yq -i '.giscus.repo = "${{ github.repository }}"' _config.yml
 
       - name: Install and Build 🔧
         run: |
