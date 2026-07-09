@@ -8,7 +8,7 @@ category: Winter 2026/27
 nr:
     - IN2106
 instructors:
-    - Shanshan_Xu
+    - Mohamed_Elganayni
 language: English
 sws: 6
 ects: 10
@@ -17,7 +17,7 @@ ects: 10
 ## Course Details
 - **Course Number:** IN2106
 - **Format:** Master Practical Course
-- **Instructors:** Shanshan Xu
+- **Instructors:** Mohamed Elganayni
 - **Language:** English
 - **SWS:** 6
 - **ECTS:** 10

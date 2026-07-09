@@ -2,6 +2,7 @@
 layout: page
 title: "Master Practical Course - Legal Natural Language Processing Lab (IN2106)"
 description: Practical Course
+img: assets/img/InfoSession WiSe23_24.jpg
 importance: 2
 category: Summer 2026
 ---
