@@ -24,6 +24,16 @@ ects: 10
 - **SWS:** 6
 - **ECTS:** 10
 
+## Information Session
+
+Watch the recorded information session for our winter semester 2026/27 lab courses:
+
+<div style="max-width: 720px; margin: 1.5rem auto;">
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://www.youtube.com/embed/fTLZwcTFy9c" title="Information Session – Winter Semester 2026/27 Lab Courses" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+</div>
+
 ## Content Outline
 
 This practical course addresses multi-agent systems and modern AI systems that combine heterogeneous agents, LLMs, retrieval, communication, planning, and resource-aware decision making. The central project is a configurable, tournament-style environment in which teams of agents solve knowledge-intensive tasks over a fixed corpus.

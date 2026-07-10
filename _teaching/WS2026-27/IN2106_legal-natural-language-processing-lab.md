@@ -23,9 +23,14 @@ ects: 10
 - **ECTS:** 10
 
 ## Information Session
-- **Date & Time:** TBD
-- **Meeting Recording:** TBD
-- **Password:** TBD
+
+Watch the recorded information session for our winter semester 2026/27 lab courses:
+
+<div style="max-width: 720px; margin: 1.5rem auto;">
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://www.youtube.com/embed/fTLZwcTFy9c" title="Information Session – Winter Semester 2026/27 Lab Courses" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+</div>
 
 ## Important Notice
 Following is a short questionnaire meant to pre-assess your background in ML and NLP for the legal data analysis lab, and to provide us with information on how to rank applicants since we have limited slots available. If you are interested in the lab and would like to match with us, please fill out the form. If you are decently proficient in Python, have some practical ML experience (e.g., by implementing a classifier) and can answer the "how familiar are you with" questions positively, you should be able to successfully complete the lab.
