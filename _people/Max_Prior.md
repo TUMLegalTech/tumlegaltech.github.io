@@ -8,7 +8,7 @@ tags: formatting links
 category: Research Associates
 importance: 2
 permalink: /people/max-prior/
-room: 5612.01.035
+room: 5611.01.035
 scholar_userid: 4UVI6psAAAAJ
 card_photo_class: profile-photo--zoom-out
 profile_photo_class: profile-photo--zoom-out
