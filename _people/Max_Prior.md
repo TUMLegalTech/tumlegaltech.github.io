@@ -9,6 +9,7 @@ category: Research Associates
 importance: 2
 permalink: /people/max-prior/
 room: 5612.01.035
+scholar_userid: 4UVI6psAAAAJ
 card_photo_class: profile-photo--zoom-out
 profile_photo_class: profile-photo--zoom-out
 research_interests:
@@ -19,9 +20,8 @@ research_interests:
 
 I am Max Prior, a PhD student at the TUM Professorship for Legal Tech. My academic background bridges computer science (M.Phil. from the Hong Kong University of Science and Technology, MSc from the University of Birmingham) and economics (MSc and BSc from the University of Vienna).
 
-I am offering Master's theses in the following areas:
+## Master's thesis supervision
 
-- Text compression and LLM latency reduction
-- Tax minimization strategies with AI
+I am interested in supervising Master's theses. My papers on [Google Scholar](https://scholar.google.com/citations?user=4UVI6psAAAAJ&hl=de) provide an overview of my research and can serve as a starting point for your project idea.
 
-No prior experience is required; an interest in law is a plus. If interested, please send your current transcript to max.prior@tum.de.
+Please send your CV, academic transcripts, and a short description of your project idea to [max.prior@tum.de](mailto:max.prior@tum.de).
