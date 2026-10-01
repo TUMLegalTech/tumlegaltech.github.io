@@ -682,10 +682,38 @@ footer.sticky-bottom {
     }
   }
 
-  .grid-sizer,
+  // Uniform card grid (masonry is skipped for projects in assets/js/masonry.js)
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+  }
+
+  .grid-sizer {
+    display: none;
+  }
+
   .grid-item {
-    width: 250px;
-    margin-bottom: 10px;
+    display: flex;
+
+    > a {
+      display: flex;
+      width: 100%;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .card img {
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
   }
 
   h2.category {
