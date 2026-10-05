@@ -2,10 +2,10 @@
 layout: page
 title: Digital-Ready Tax Law (Digitaltaugliches Steuerrecht)
 description: Research supporting digital-ready (tax) law
-img: assets/img/robotinparliament.png
+# img: assets/img/robotinparliament.png
 importance: 1
 category: work
-related_publications: schultz2025KI
+related_publications: schultz2025KI, prior2026oldfriend
 keywords: "Rules as Code, digital-ready legislation, LegisLLM, AI-supported legislative drafting, compliance cost automation, tax law NLP"
 funding: "German Federal Ministry of Finance (BMF)"
 partners:
