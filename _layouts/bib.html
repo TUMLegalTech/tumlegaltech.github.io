@@ -124,6 +124,8 @@
     {%- else -%}
     {%- capture entrytype -%}{%- endcapture -%}
     {%- endif -%}
+    {%- assign entrymonth = '' -%}
+    {%- assign entryyear = '' -%}
     {%- if entry.month -%}
     {%- capture entrymonth -%}{{ " " }}{{ entry.month | capitalize }}{%- endcapture -%}
     {%- endif -%}
@@ -150,6 +152,11 @@
       {%- endif %}
       {%- if entry.bibtex_show %}
       <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+      {%- endif %}
+      {%- if entry.bibtex_download %}
+      <a href="data:application/x-bibtex;charset=utf-8,{{ entry.bibtex | hideCustomBibtex | url_encode | replace: '+', '%20' | escape }}"
+        download="{{ entry.key | escape }}.bib" class="btn btn-sm z-depth-0"
+        aria-label="Download BibTeX citation for {{ entry.title | strip_html | escape }}">Download .bib</a>
       {%- endif %}
       {%- if entry.html %}
       <a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
