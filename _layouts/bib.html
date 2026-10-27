@@ -202,7 +202,7 @@
       {%- endif %}
       {%- if entry.bibtex_download %}
       <a href="data:application/x-bibtex;charset=utf-8,{{ entry.bibtex | hideCustomBibtex | url_encode | replace: '+', '%20' | escape }}"
-        download="{{ entry.key | escape }}.bib" class="bibtex-export"
+        download="{{ entry.key | escape }}.bib" class="btn btn-sm z-depth-0" style="text-transform: none;"
         aria-label="Export BibTeX citation for {{ entry.title | strip_html | escape }}">export BibTeX citation</a>
       {%- endif %}
     </div>

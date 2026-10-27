@@ -254,7 +254,7 @@ Your publications' page is generated automatically from your BibTex bibliography
 
 You can add extra information to a publication, like a PDF file in the [assets/pdf/](assets/pdf/) directory and add the path to the PDF file in the BibTeX entry with the `pdf` field. Some of the supported fields are: `abstract`, `altmetric`, `arxiv`, `bibtex_show`, `blog`, `code`, `dimensions`, `doi`, `eprint`, `html`, `isbn`, `pdf`, `pmid`, `poster`, `slides`, `supp`, `video`, and `website`.
 
-Set `bibtex_download = {true}` on an entry to show **export BibTeX citation** after its paper links. It opens an arXiv-style popup with selectable BibTeX, **Copy citation**, and **Download .bib**. Without JavaScript or native dialog support, the link downloads the file directly. Both use the same entry, excluding the internal fields listed in `filtered_bibtex_keywords`. Include a standard `url` or `doi` field so the exported citation links to the paper.
+Set `bibtex_download = {true}` on an entry to show an **export BibTeX citation** button after its paper links, styled like HTML/PDF. Clicking it directly downloads a `.bib` file, including without JavaScript. The download uses the same entry, excluding the internal fields listed in `filtered_bibtex_keywords`. Include a standard `url` or `doi` field so the exported citation links to the paper.
 
 [![Publications Preview](assets/img/readme_preview/publications.png)](https://alshedivat.github.io/al-folio/publications/)
 

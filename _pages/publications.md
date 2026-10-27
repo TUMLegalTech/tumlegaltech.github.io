@@ -128,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 .publication-filters select {
-  max-width: calc(100% - 1rem);
   margin-right: 1rem;
   padding: 0.5rem;
   border-radius: 4px;

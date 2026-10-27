@@ -1013,27 +1013,6 @@ $card-column-width: 180px;
       }
 
       .links {
-        .bibtex-export {
-          display: inline-block;
-          margin-left: 0.25rem;
-          padding: 0.25rem 0.35rem;
-          color: var(--global-theme-color);
-          font-size: 0.8125rem;
-          font-weight: 700;
-          line-height: 1.5;
-          vertical-align: middle;
-          white-space: nowrap;
-
-          &:hover {
-            text-decoration: underline;
-          }
-
-          &:focus-visible {
-            outline: 2px solid var(--global-theme-color);
-            outline-offset: 2px;
-          }
-        }
-
         a.btn {
           color: var(--global-text-color);
           border: 1px solid var(--global-text-color);
