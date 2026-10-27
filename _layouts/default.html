@@ -49,6 +49,10 @@
     <!-- Footer -->
     {%- include footer.html %}
 
+    {% if content contains 'bibtex-export' %}
+      {% include bibtex_citation.html %}
+    {% endif %}
+
     <!-- JavaScripts -->
     {% include scripts/jquery.html %}
     {% include scripts/bootstrap.html %}
