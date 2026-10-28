@@ -1,12 +1,12 @@
 ---
 layout: page
-title: ARUM
-description: Artificial Generated Rulemaps. Automatische Normformalisierung mit Generativen Sprachmodellen
+title: ARUM – Artificially Generated Rulemaps
+description: Automated Formalization of Legal Norms using Generative Language Models
 img: assets/img/arum/rulemapping.png
 importance: 2
 category: work
 keywords: "law-as-code, legal formalization, public law, German law, legislation, digitization of public administration"
-funding: Bundesministerium für Forschung, Technologie und Raumfahrt, Förderlinie "KMU-Innovativ"
+funding: Bundesministerium für Forschung, Technologie und Raumfahrt - Förderlinie "KMU-Innovativ"
 partners:
   - "Rulemapping Group GmbH"
 status: "Active"
