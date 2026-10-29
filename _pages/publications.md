@@ -36,6 +36,7 @@ use_mediaTUM: false
     <option value="peer-reviewed-conference">Peer Reviewed Technical Conference Papers</option>
     <option value="academic-legal">Academic Legal Literature</option>
     <option value="magazine">Magazine Articles</option>
+    <option value="preprint">Preprints</option>
     <option value="blog">Blog Posts</option>
   </select>
 

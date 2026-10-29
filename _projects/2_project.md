@@ -5,7 +5,7 @@ description: A locally deployable language model and agentic prototype for work 
 # img: assets/img/llmjudge.png
 importance: 2
 category: work
-related_publications: elganayni2026judgedisposition, nagl2026bengerbenchmark, nagl2026bengerplatform, prior2026chunking, elganayni2026reranking, prior2026oldfriend, nagl2025courtpressger, vonwedel2026casearc, wais2026appeallm, wais2025lossfunctions
+related_publications: elganayni2026judgedisposition, nagl2026bengerbenchmark, nagl2026bengerplatform, prior2026chunking, elganayni2026reranking, prior2026oldfriend, nagl2025courtpressger, vonwedel2026casearc, wais2026appeallm, wais2025lossfunctions, chen2026bridgeddistillation, brodowski2026gelingensbedingungen
 keywords: "generative AI, judicial decision support, large language models, German judiciary, electronic court files, pseudonymization, agentic systems, on-policy distillation"
 funding: "German Federal and State Ministries of Justice"
 partners:
