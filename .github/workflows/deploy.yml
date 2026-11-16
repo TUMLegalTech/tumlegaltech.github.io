@@ -25,7 +25,9 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.2'
+          # Track the latest 3.2.x: runner images only ship the newest patch
+          # of each series, so pinning an exact patch breaks when they rebuild.
+          ruby-version: '3.2'
           bundler-cache: true
 
       - name: Update _config.yml ⚙️
